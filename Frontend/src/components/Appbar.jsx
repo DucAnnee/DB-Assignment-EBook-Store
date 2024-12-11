@@ -34,7 +34,7 @@ export default function Appbar() {
     <AppBar
       position="sticky"
       sx={{
-        backgroundColor: "rgba(255,255,255,0.2)",
+        backgroundColor: "rgba(255,255,255,1.0)",
         backdropFilter: "blur(10px)",
       }}>
       <Toolbar

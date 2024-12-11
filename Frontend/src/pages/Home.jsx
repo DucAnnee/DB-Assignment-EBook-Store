@@ -1,17 +1,25 @@
-import { Box, Paper, Typography } from "@mui/material";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Box, Grid2, IconButton, Paper, Typography } from "@mui/material";
+import Flickity from "react-flickity-component";
+import "flickity/css/flickity.css";
 import lambanvoibautroi from "../assets/nna-lambanvoibautroi.jpg";
 import ngoikhoctrencay from "../assets/nna-ngoikhoctrencay.jpg";
 import quangodilen from "../assets/nna-quangodilen.jpg";
+import hondaphuthuy from "../assets/hp-hondaphuthuy.jpg";
+import hoangtulai from "../assets/hp-hoangtulai.jpg";
+import baoboituthan from "../assets/hp-baoboituthan.jpg";
+import phongchuabimat from "../assets/hp-phongchuabimat.jpg";
+import chieccoclua from "../assets/hp-chieccoclua.jpg";
+
+import { useState } from "react";
 
 export default function Home() {
   return (
     <Box
       sx={{
         alignSelf: "center",
+        alignContent: "center",
         width: "90vw",
-        height: "100vh",
+        minHeight: "100%", // Ensure the content takes the required space
         margin: 0,
         padding: 0,
         display: "flex",
@@ -24,12 +32,13 @@ export default function Home() {
       <Paper
         elevation={8}
         sx={{
+          width: "100%",
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
           borderRadius: "20px",
-          width: "100%",
+          py: 2,
         }}>
         {/* Trending text */}
         <Box
@@ -38,18 +47,22 @@ export default function Home() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "flex-start",
+            px: 10,
+            flexGrow: 1,
           }}>
-          <Typography fontWeight="bold" fontSize="2rem" color="primary.main">
-            New release and Trending
+          <Typography fontWeight="bold" fontSize="3rem" color="primary.main">
+            Sách mới xuất bản
+          </Typography>
+          <Typography fontSize="1.3rem" color="primary.dark">
+            Cùng khám phá những cuốn sách mới nhất từ các tác giả nổi tiếng
           </Typography>
         </Box>
 
         {/* Book Carousel */}
         <Box
           sx={{
-            width: "50%",
-            height: "80%",
+            width: "60%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -62,17 +75,101 @@ export default function Home() {
         elevation={8}
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "center",
           borderRadius: "20px",
           width: "100%",
+          py: 2,
         }}>
-        EHEHEEEHEHE
+        <Box
+          sx={{
+            display: "flex",
+            alignContent: "flex-start",
+          }}>
+          <Typography fontWeight="bold" fontSize="2rem" color="primary.dark">
+            Bộ sưu tập bán chạy
+          </Typography>
+        </Box>
+        <FeaturedBooks />
       </Paper>
     </Box>
   );
 }
+
+const FeaturedBooks = () => {
+  const featured = [
+    {
+      image: hondaphuthuy,
+      title: "Hòn Đá Phù Thủy",
+      author: "J.K. Rowling",
+    },
+    {
+      image: hoangtulai,
+      title: "Hoàng Tử Lai",
+      author: "J.K. Rowling",
+    },
+    {
+      image: baoboituthan,
+      title: "Bảo Bối Tử Thần",
+      author: "J.K. Rowling",
+    },
+    {
+      image: phongchuabimat,
+      title: "Phòng Chứa Bí Mật",
+      author: "J.K. Rowling",
+    },
+    {
+      image: chieccoclua,
+      title: "Chiếc Cốc Lửa",
+      author: "J.K. Rowling",
+    },
+  ];
+
+  return (
+    <Box sx={{ overflowX: "auto", px: 3, py: 3 }}>
+      <Grid2 container spacing={8} sx={{ display: "flex", flexWrap: "nowrap" }}>
+        {featured.map((book, index) => (
+          <Grid2 key={index} item sx={{ height: "30vh", flexShrink: 0 }}>
+            <Box
+              sx={{
+                height: "80%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}>
+              {/* Book Image */}
+              <img
+                src={book.image}
+                alt={book.title}
+                style={{
+                  height: "100%",
+                  width: "auto",
+                  objectFit: "contain",
+                  boxShadow: "5px 5px 10px rgba(0,0,0,0.5)",
+                  borderRadius: "8px",
+                }}
+              />
+              {/* Book Title */}
+              <Typography
+                fontSize="1rem"
+                color="primary.dark"
+                mt={1}
+                align="center"
+                fontWeight="bold">
+                {book.title}
+              </Typography>
+              {/* Author */}
+              <Typography fontSize="0.8rem" color="primary.dark" align="center">
+                {book.author}
+              </Typography>
+            </Box>
+          </Grid2>
+        ))}
+      </Grid2>
+    </Box>
+  );
+};
 
 const TrendingBookSlider = () => {
   const books = [
@@ -96,59 +193,51 @@ const TrendingBookSlider = () => {
     },
   ];
 
+  const flickityOptions = {
+    initialIndex: 0,
+    wrapAround: true, // Loop through the items
+    autoPlay: true, // Enable autopla
+    pauseAutoPlayOnHover: true,
+    prevNextButtons: true, // Show previous/next buttons
+    pageDots: false, // Hide dots indicator
+    draggable: true, // Allow dragging of slides
+  };
+
   return (
     <Box
       sx={{
         width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignContent: "center",
-        alignItems: "center",
       }}>
-      <Carousel
-        infiniteLoop
-        interval={5000}
-        showStatus={false}
-        showThumbs={false}
-        showArrows={true}
-        stopOnHover
-        swipeable
-        dynamicHeight={false}
-        emulateTouch
-        style={{
-          width: "100%",
-        }}>
+      <Flickity options={flickityOptions} style={{}}>
         {books.map((book, index) => (
           <Box
             key={index}
             sx={{
+              width: "100%",
+              height: "50vh",
               display: "flex",
               alignItems: "center",
-              justifyContent: "flex-end",
-              flexDirection: "row",
-              height: "100%",
+              justifyContent: "center",
+              gap: 3,
             }}>
             {/* Book Image */}
-            <Box
+            {/* <Box
               sx={{
-                display: "flex",
                 justifyContent: "center",
-                alignContent: "center",
-                alignItems: "center",
-                marginRight: "2vw",
+                height: "90%",
+              }}> */}
+            <img
+              src={book.image}
+              alt={book.title}
+              style={{
                 height: "80%",
-              }}>
-              <img
-                src={book.image}
-                alt={book.title}
-                style={{
-                  height: "100%",
-                  objectFit: "contain",
-                  boxShadow: "5px 5px 10px 0px rgba(0,0,0,0.5)",
-                  borderRadius: 8,
-                }}
-              />
-            </Box>
+                width: "auto",
+                objectFit: "cover",
+                boxShadow: "5px 5px 10px rgba(0,0,0,0.5)",
+                borderRadius: 8,
+              }}
+            />
+            {/* </Box> */}
 
             {/* Book Details */}
             <Box
@@ -156,11 +245,11 @@ const TrendingBookSlider = () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                alignItems: "flex-start", // Keep details left-aligned
+                alignItems: "flex-start",
               }}>
               <Typography
                 fontWeight="bold"
-                fontSize="1rem"
+                fontSize="1.8rem"
                 color="primary.dark">
                 {book.title}
               </Typography>
@@ -169,7 +258,7 @@ const TrendingBookSlider = () => {
               </Typography>
               <Typography
                 color="primary"
-                fontSize="1rem"
+                fontSize="1.2rem"
                 fontWeight="bold"
                 mt={1}>
                 Price: {book.price}
@@ -177,7 +266,7 @@ const TrendingBookSlider = () => {
             </Box>
           </Box>
         ))}
-      </Carousel>
+      </Flickity>
     </Box>
   );
 };
