@@ -1,4 +1,11 @@
-import { Box, Grid2, IconButton, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid2,
+  IconButton,
+  Paper,
+  Typography,
+} from "@mui/material";
 import Flickity from "react-flickity-component";
 import "flickity/css/flickity.css";
 import lambanvoibautroi from "../assets/nna-lambanvoibautroi.jpg";
@@ -46,17 +53,36 @@ export default function Home() {
             width: "50%",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "flex-start",
+            justifyContent: "space-between",
+            // justifyContent: "space-between",
+            alignContent: "space-between",
+            // alignItems: "flex-start",
             px: 10,
+            gap: 4,
             flexGrow: 1,
           }}>
-          <Typography fontWeight="bold" fontSize="3rem" color="primary.main">
-            Sách mới xuất bản
-          </Typography>
-          <Typography fontSize="1.3rem" color="primary.dark">
-            Cùng khám phá những cuốn sách mới nhất từ các tác giả nổi tiếng
-          </Typography>
+          <Box>
+            <Typography fontWeight="bold" fontSize="3rem" color="primary.main">
+              Sách mới xuất bản
+            </Typography>
+            <Typography fontSize="1.3rem" color="primary.dark">
+              Cùng khám phá những cuốn sách mới nhất từ các tác giả nổi tiếng
+            </Typography>
+          </Box>
+          <Box>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "primary.main",
+                color: "white",
+                fontWeight: "bold",
+                fontSize: "1.2rem",
+                borderRadius: "12px",
+              }}
+              onClick={() => navigate("/products")}>
+              Khám phá thêm
+            </Button>
+          </Box>
         </Box>
 
         {/* Book Carousel */}
@@ -254,14 +280,14 @@ const TrendingBookSlider = () => {
                 {book.title}
               </Typography>
               <Typography color="text.secondary" fontSize="1rem" mt={1}>
-                Author: {book.author}
+                Tác giả: {book.author}
               </Typography>
               <Typography
                 color="primary"
                 fontSize="1.2rem"
                 fontWeight="bold"
                 mt={1}>
-                Price: {book.price}
+                Giá: {book.price}
               </Typography>
             </Box>
           </Box>

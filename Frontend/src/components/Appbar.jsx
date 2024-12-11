@@ -4,10 +4,12 @@ import {
   Toolbar,
   TextField,
   IconButton,
-  Select,
-  MenuItem,
   InputAdornment,
   Avatar,
+  Typography,
+  Menu,
+  MenuItem,
+  Button,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsNoneOutlined from "@mui/icons-material/NotificationsNoneOutlined";
@@ -17,16 +19,30 @@ import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 export default function Appbar() {
-  const [userOption, setUserOption] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Track login status
+  const [anchorEl, setAnchorEl] = useState(null); // Track menu anchor
   const navigate = useNavigate();
 
-  const handleUserOptionChange = (event) => {
-    setUserOption(event.target.value);
-    if (event.target.value === "logout") {
-      // Perform logout logic here
-      console.log("Logging out...");
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget); // Open menu at button location
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null); // Close menu
+  };
+
+  const handleMenuOptionClick = (option) => {
+    handleMenuClose();
+    if (!isLoggedIn) {
+      if (option === "login") navigate("/login");
+      if (option === "signup") navigate("/signup");
     } else {
-      navigate(`/${event.target.value}`);
+      if (option === "logout") {
+        console.log("Logging out...");
+        setIsLoggedIn(false);
+      } else {
+        navigate(`/${option}`);
+      }
     }
   };
 
@@ -39,11 +55,12 @@ export default function Appbar() {
       }}>
       <Toolbar
         sx={{
-          display: "display",
+          display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           paddingX: 2,
         }}>
+        {/* Logo */}
         <Box
           sx={{
             width: "5vw",
@@ -52,7 +69,6 @@ export default function Appbar() {
             justifyContent: "space-between",
             alignItems: "center",
           }}>
-          {/* Logo */}
           <Box
             component="img"
             src={logo}
@@ -78,7 +94,7 @@ export default function Appbar() {
             variant="outlined"
             fullWidth
             sx={{
-              flex: 1, // Makes the search bar take available space
+              flex: 1,
               borderRadius: "50px",
               backgroundColor: "#f0f0f0",
               border: "none",
@@ -90,16 +106,14 @@ export default function Appbar() {
                 fontSize: "0.9rem",
               },
             }}
-            slotProps={{
-              input: {
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton edge="end">
-                      <SearchIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              },
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton edge="end">
+                    <SearchIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
             }}
           />
         </Box>
@@ -114,38 +128,74 @@ export default function Appbar() {
           <IconButton>
             <NotificationsNoneOutlined sx={{ width: 30, height: 30 }} />
           </IconButton>
-          <IconButton>
+          <IconButton
+            onClick={() => {
+              navigate("/cart");
+            }}>
             <ShoppingCartOutlinedIcon sx={{ width: 30, height: 30 }} />
           </IconButton>
         </Box>
 
-        {/* User Select Box */}
+        {/* User Button with Dropdown Menu */}
         <Box>
-          <Select
-            value={userOption}
-            onChange={handleUserOptionChange}
-            displayEmpty
+          <Button
+            onClick={handleMenuOpen}
             sx={{
               borderRadius: "50px",
               backgroundColor: "#f0f0f0",
-              height: "100%",
-              flex: 1, // Makes the select box take equal width to the search bar
-              paddingLeft: 1,
-              "& .MuiSelect-icon": { right: 5 },
-              "& .MuiInputBase-root": {
-                border: "none", // Remove the border
+              padding: "0.5rem 1rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              textTransform: "none",
+            }}>
+            <Avatar sx={{ width: 30, height: 30 }} />
+            <Typography color="primary.dark" fontWeight="bold">
+              {isLoggedIn ? "Người dùng" : "Tài khoản"}
+            </Typography>
+          </Button>
+
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleMenuClose}
+            MenuListProps={{
+              "aria-labelledby": "account-button",
+              width: "100%",
+            }}
+            sx={{
+              "& .MuiPaper-root": {
+                minWidth: anchorEl ? anchorEl.offsetWidth : "auto", // Set menu width equal to button width
               },
             }}>
-            <MenuItem value="" disabled>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Avatar sx={{ width: 20, height: 20, marginRight: 1 }} />
-                <span>User</span>
-              </Box>
-            </MenuItem>
-            <MenuItem value="trang-ca-nhan">Trang cá nhân</MenuItem>
-            <MenuItem value="lich-su">Lịch sử mua hàng</MenuItem>
-            <MenuItem value="logout">Đăng xuất</MenuItem>
-          </Select>
+            {!isLoggedIn ? (
+              <>
+                <MenuItem
+                  onClick={() => handleMenuOptionClick("login")}
+                  sx={{ width: "100%" }}>
+                  Đăng nhập
+                </MenuItem>
+                <MenuItem
+                  onClick={() => handleMenuOptionClick("signup")}
+                  sx={{ width: "100%" }}>
+                  Đăng ký
+                </MenuItem>
+              </>
+            ) : (
+              <>
+                <MenuItem
+                  onClick={() => handleMenuOptionClick("trang-ca-nhan")}>
+                  Trang cá nhân
+                </MenuItem>
+                <MenuItem onClick={() => handleMenuOptionClick("lich-su")}>
+                  Lịch sử mua hàng
+                </MenuItem>
+                <MenuItem onClick={() => handleMenuOptionClick("logout")}>
+                  Đăng xuất
+                </MenuItem>
+              </>
+            )}
+          </Menu>
         </Box>
       </Toolbar>
     </AppBar>
