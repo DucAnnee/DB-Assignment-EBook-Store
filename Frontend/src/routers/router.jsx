@@ -7,6 +7,7 @@ import Cart from "../pages/Cart";
 import Profile from "../pages/Profile/Profile";
 import Addresses from "../pages/Profile/Addresses";
 import History from "../pages/Profile/History";
+import ProductDetail from "../pages/ProductDetail";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/customer/history",
         element: <History />,
+      },
+      {
+        path: "/products/:id",
+        element: <ProductDetail />,
       },
     ],
   },

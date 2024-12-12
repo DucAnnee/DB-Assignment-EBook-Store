@@ -183,10 +183,12 @@ export default function Appbar() {
               </>
             ) : (
               <>
-                <MenuItem onClick={() => handleMenuOptionClick("profile")}>
+                <MenuItem
+                  onClick={() => handleMenuOptionClick("customer/profile")}>
                   Trang cá nhân
                 </MenuItem>
-                <MenuItem onClick={() => handleMenuOptionClick("history")}>
+                <MenuItem
+                  onClick={() => handleMenuOptionClick("customer/history")}>
                   Lịch sử mua hàng
                 </MenuItem>
                 <MenuItem onClick={() => handleMenuOptionClick("logout")}>

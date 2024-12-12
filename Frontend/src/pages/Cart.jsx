@@ -76,7 +76,7 @@ export default function Cart() {
         justifyContent: "center",
         alignItems: "center",
         padding: "2rem",
-        minHeight: "80vh", // Center the paper when no items
+        minHeight: "80vh",
       }}>
       <Paper
         elevation={8}
@@ -88,6 +88,7 @@ export default function Cart() {
           padding: "2rem",
           textAlign: "center",
           gap: "1rem",
+          borderRadius: "20px",
         }}>
         <Box
           component="img"
@@ -99,12 +100,16 @@ export default function Cart() {
             objectFit: "contain",
           }}
         />
-        <Typography variant="h6" fontWeight="bold">
+        <Typography color="primary.dark" fontSize="1.5rem" fontWeight="bold">
           Chưa có sản phẩm trong giỏ hàng của bạn
         </Typography>
         <Button
           variant="contained"
-          color="primary"
+          sx={{
+            color: "white",
+            backgroundColor: "primary.main",
+            borderRadius: "12px",
+          }}
           onClick={() => navigate("/products")}>
           Mua sắm ngay
         </Button>
@@ -113,16 +118,17 @@ export default function Cart() {
   ) : (
     <Box
       sx={{
+        width: "80vw",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        padding: "1rem",
+        py: "1rem",
         gap: "2rem",
       }}>
       {/* Left: Cart Items */}
       <Box
         sx={{
-          flex: 2,
+          flexGrow: 1,
           display: "flex",
           flexDirection: "column",
           position: "relative",
@@ -144,17 +150,14 @@ export default function Cart() {
           <Checkbox
             checked={allSelected}
             onChange={(e) => handleSelectAll(e.target.checked)}
-            sx={{ pr: 15 }}
           />
-          <Typography sx={{ flex: 2, fontWeight: "bold", pr: 14 }}>
+          <Typography sx={{ flex: 2, fontWeight: "bold", px: 11 }}>
             Tên sản phẩm
           </Typography>
-          <Typography sx={{ flex: 1, fontWeight: "bold", pr: 3 }}>
+          <Typography sx={{ flex: 1, fontWeight: "bold", px: 1.5 }}>
             Số lượng
           </Typography>
-          <Typography sx={{ flex: 1, fontWeight: "bold", pr: 3 }}>
-            Đơn giá
-          </Typography>
+          <Typography sx={{ flex: 1, fontWeight: "bold" }}>Đơn giá</Typography>
           <Typography sx={{ flex: 1, fontWeight: "bold" }}>Xoá</Typography>
         </Box>
 
@@ -187,7 +190,7 @@ export default function Cart() {
       {/* Right: Payment Widget */}
       <Box
         sx={{
-          flex: 1,
+          width: "30%",
           maxWidth: "300px",
           display: "flex",
           flexDirection: "column",
