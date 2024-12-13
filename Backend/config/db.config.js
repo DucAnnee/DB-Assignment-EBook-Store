@@ -1,8 +1,8 @@
 import OracleDB from "oracledb";
 
 const config = {
-  user: 'c##dbuser',
-  password: '1234',
+  user: 'c##StoreAdmin',
+  password: 'Admin123',
   connectString: 'localhost:1521/xe'
 }
 
@@ -21,4 +21,4 @@ async function initializeDBConnection() {
 // You can call this function at the start of your application
 initializeDBConnection();
 
-export default dbconnection;
+export default config;
