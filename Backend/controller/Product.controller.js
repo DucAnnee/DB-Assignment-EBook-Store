@@ -26,7 +26,6 @@ export class ProductController{
 
             res.status(200).json({
                 status: 'success',
-                results: 10,
                 data: result,
             });
         } catch (err) {
