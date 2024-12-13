@@ -1,0 +1,4 @@
+CREATE USER c##StoreAdmin IDENTIFIED BY Admin123;
+
+GRANT c##RAdmin TO c##StoreAdmin;
+ALTER USER C##StoreAdmin QUOTA UNLIMITED ON USERS;

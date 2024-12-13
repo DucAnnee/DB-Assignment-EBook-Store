@@ -1,9 +1,3 @@
-CREATE ROLE c##RAdmin;
-
-GRANT CONNECT TO c##RAdmin;
-GRANT CREATE SESSION TO c##RAdmin;
-GRANT DBA TO c##RAdmin;
-
 CREATE ROLE c##RCustomer;
 
 GRANT CONNECT TO c##RCustomer;

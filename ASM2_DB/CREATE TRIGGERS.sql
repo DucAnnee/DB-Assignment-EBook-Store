@@ -122,3 +122,46 @@ BEGIN
     WHERE UserID = :OLD.UserID;
 END;
 /
+
+-- Auto-Update Order Total After Inserting OrderItem
+CREATE OR REPLACE TRIGGER Update_Order_TotalPrice
+FOR INSERT OR UPDATE OR DELETE ON OrderItem
+COMPOUND TRIGGER
+
+    -- Collection to store affected OrderIDs
+    TYPE t_order_ids IS TABLE OF NUMBER INDEX BY PLS_INTEGER;
+    v_order_ids t_order_ids;
+
+    -- BEFORE STATEMENT: Initialize the collection
+    BEFORE STATEMENT IS
+    BEGIN
+        v_order_ids.DELETE;
+    END BEFORE STATEMENT;
+
+    -- BEFORE EACH ROW: Collect affected OrderIDs
+    BEFORE EACH ROW IS
+    BEGIN
+        IF INSERTING OR UPDATING THEN
+            v_order_ids(:NEW.OrderID) := 1;
+        ELSIF DELETING THEN
+            v_order_ids(:OLD.OrderID) := 1;
+        END IF;
+    END BEFORE EACH ROW;
+
+    -- AFTER STATEMENT: Recalculate TotalPrice for affected orders
+    AFTER STATEMENT IS
+    BEGIN
+        FOR i IN v_order_ids.FIRST .. v_order_ids.LAST LOOP
+            UPDATE Orders o
+            SET TotalPrice = (
+                SELECT NVL(SUM(i.Price * oi.Quantity), 0)
+                FROM OrderItem oi
+                JOIN Item i ON oi.ItemID = i.ItemID
+                WHERE oi.OrderID = o.OrderID
+            )
+            WHERE o.OrderID = i;
+        END LOOP;
+    END AFTER STATEMENT;
+
+END;
+/
