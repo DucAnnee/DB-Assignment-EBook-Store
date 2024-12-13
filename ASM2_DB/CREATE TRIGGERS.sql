@@ -15,21 +15,21 @@ END;
 /
 
 -- Ensure TotalPrice Calculation for Orders
-CREATE OR REPLACE TRIGGER trg_calculate_total_price
-AFTER INSERT OR UPDATE OR DELETE ON OrderItem
-FOR EACH ROW
-BEGIN
-    UPDATE Orders
-    SET TotalPrice = (
-        SELECT SUM(I.Price * OI.Quantity)
-        FROM OrderItem OI
-        JOIN Item I ON OI.ItemID = I.ItemID
-        WHERE OI.OrderID = :OLD.OrderID
-    )
-    WHERE OrderID = :OLD.OrderID;
-END;
-/
-
+-- CREATE OR REPLACE TRIGGER trg_calculate_total_price
+-- AFTER INSERT OR UPDATE OR DELETE ON OrderItem
+-- FOR EACH ROW
+-- BEGIN
+--     UPDATE Orders
+--     SET TotalPrice = (
+--         SELECT SUM(I.Price * OI.Quantity)
+--         FROM OrderItem OI
+--         JOIN Item I ON OI.ItemID = I.ItemID
+--         WHERE OI.OrderID = :OLD.OrderID
+--     )
+--     WHERE OrderID = :OLD.OrderID;
+-- END;
+-- /
+-- DROP TRIGGER trg_calculate_total_price;
 -- Prevent Negative Stock in Item Table
 CREATE OR REPLACE TRIGGER trg_validate_stock_update
 BEFORE UPDATE OF Stock ON Item

@@ -65,17 +65,17 @@ END;
 
 BEGIN
     -- Insert Regular Users
-    INSERT INTO User_Group (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
+    INSERT INTO UserGroup (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
     VALUES (2001, 'nguyenvana', 'nguyenvana@gmail.com', '123 Lê Lợi, Hà Nội', '0901123456', 'M', 'N');
 
-    INSERT INTO User_Group (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
+    INSERT INTO UserGroup (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
     VALUES (2002, 'tranthib', 'tranthib@gmail.com', '456 Nguyễn Huệ, TP HCM', '0912234567', 'F', 'N');
 
-    INSERT INTO User_Group (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
+    INSERT INTO UserGroup (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
     VALUES (2004, 'lethihanh', 'lethihanh@gmail.com', '321 Lý Thái Tổ, Huế', '0934456789', 'F', 'N');
 
     -- Insert Manager Users
-    INSERT INTO User_Group (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
+    INSERT INTO UserGroup (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
     VALUES (3001, 'admin_manager', 'manager1@toystore.com', '123 Admin Street, Hà Nội', '0987654321', 'M', 'Y');
 
     COMMIT;
