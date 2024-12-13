@@ -55,9 +55,8 @@ export class ProductController{
             const result = await dbconnection.execute(
                 `SELECT *
                 FROM BOOK_INFO`,
-                // {
-                //     maxRows: quantity
-                // }
+                [],
+                { maxRows: quantity }
             );
 
             console.log(result);
@@ -65,7 +64,7 @@ export class ProductController{
             res.status(200).json({
                 status: 'success',
                 results: quantity,
-                data: result,
+                data: result.rows,
             });
         } catch (err) {
             console.log(err);
