@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.use("/authentication", userRoutes);
 router.use("/product", productRoutes);
-router.use("/cart", orderRoutes);
 router.use("/user", userRoutes);
+router.use("/cart", orderRoutes);
 // router.use("/printorder", printorderRoutes);
 // router.use("/pageorder",pageorderRoutes);
 // router.use("/Student",StudentRoutes);

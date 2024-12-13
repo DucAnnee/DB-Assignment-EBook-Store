@@ -7,7 +7,7 @@ export class ProductController{
         try {
             const dbconnection = await oracledb.getConnection(config);
             if (!dbconnection) {
-                throw new AppError("DB NGU!", 400);
+                throw new AppError("Failed to connect to database!", 400);
             }
 
             const { id } = req.params;
@@ -37,14 +37,15 @@ export class ProductController{
 
     async getByQuantity(req, res, next) {
         try {
+            const dbconnection = await oracledb.getConnection(config);
             if (!dbconnection) {
-                throw new AppError("Database connection failed.", 400);
+                throw new AppError("Failed to connect to database!", 400);
             }
 
             let quantity;
             console.log(req);
             quantity = req.query.quantity;
-            console.log("Successfully received quantity ", quantity);
+            console.log("Successfully received quantity", quantity);
             if (!quantity) {
                 console.log("No input quantity");
                 quantity = 10;
@@ -67,6 +68,7 @@ export class ProductController{
                 data: result,
             });
         } catch (err) {
+            console.log(err);
             next(new AppError('Failed to get product info by quantity.', 400));
         }
     }
