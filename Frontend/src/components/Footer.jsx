@@ -81,7 +81,7 @@ const Footer = () => {
                 Chính sách bảo hành sản phẩm
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Giới thiệu nhà sách KAN E-Book
+                Giới thiệu nhà sách KAN
               </Typography>
             </Grid>
 

@@ -8,6 +8,8 @@ import Profile from "../pages/Profile/Profile";
 import Addresses from "../pages/Profile/Addresses";
 import History from "../pages/Profile/History";
 import ProductDetail from "../pages/ProductDetail";
+import Checkout from "../pages/Checkout";
+import Product from "../pages/Product";
 
 const router = createBrowserRouter([
   {
@@ -19,9 +21,18 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/Products",
+        element: <Product />,
+      },
+      {
         path: "/cart",
         element: <Cart />,
       },
+      {
+        path: "/checkout",
+        element: <Checkout />,
+      },
+
       {
         path: "/customer/profile",
         element: <Profile />,

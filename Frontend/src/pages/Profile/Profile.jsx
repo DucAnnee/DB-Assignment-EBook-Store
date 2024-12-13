@@ -3,9 +3,6 @@ import {
   Button,
   Divider,
   FormControlLabel,
-  FormLabel,
-  Grid2,
-  IconButton,
   Paper,
   Radio,
   RadioGroup,
@@ -15,11 +12,8 @@ import {
 import { useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router";
-import { ArrowRightAlt, ChevronRight } from "@mui/icons-material";
 
 export default function Profile() {
-  const [activeTab, setActiveTab] = useState("profile");
-
   const userInformation = {
     pfp: logo,
     lastName: "Nguyễn Văn",

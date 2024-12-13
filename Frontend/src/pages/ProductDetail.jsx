@@ -1,13 +1,6 @@
 import { useParams } from "react-router";
 import book_cover from "../assets/hp-baoboituthan.jpg";
-import {
-  Box,
-  Button,
-  Divider,
-  IconButton,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Divider, Paper, Typography } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
 import { useState } from "react";
 
@@ -150,7 +143,6 @@ const ProductImagePanel = (productInfo) => {
         flexDirection: "column",
         alignItems: "center",
         gap: 3,
-        width: "100%",
       }}>
       {/* Product Image */}
       <Box

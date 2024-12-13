@@ -6,6 +6,7 @@ import {
   TextField,
   Paper,
   Button,
+  Grid,
 } from "@mui/material";
 import { Add, Remove, Delete, BorderLeft } from "@mui/icons-material";
 import { useEffect, useRef, useState } from "react";
@@ -17,7 +18,7 @@ export default function Cart() {
     {
       id: 1,
       name: "Harry Potter and the Philosopher's Stone",
-      price: 150000,
+      price: 150,
       image:
         "https://images-na.ssl-images-amazon.com/images/I/51UoqRAxwEL._SX331_BO1,204,203,200_.jpg",
       quantity: 1,
@@ -26,7 +27,7 @@ export default function Cart() {
     {
       id: 2,
       name: "Harry Potter and the Chamber of Secrets",
-      price: 150000,
+      price: 150,
       image:
         "https://images-na.ssl-images-amazon.com/images/I/51UoqRAxwEL._SX331_BO1,204,203,200_.jpg",
       quantity: 1,
@@ -128,43 +129,60 @@ export default function Cart() {
       {/* Left: Cart Items */}
       <Box
         sx={{
-          flexGrow: 1,
+          width: "70%",
           display: "flex",
           flexDirection: "column",
           position: "relative",
-          maxHeight: "500px",
+          alignItems: "flex-start",
+          justifyContent: "center",
         }}>
         {/* Fixed Header */}
-        <Box
+        <Grid
+          container
+          spacing={2}
           sx={{
+            width: "100%",
             position: "sticky",
             top: 0,
             zIndex: 1,
             backgroundColor: "#fff",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
             borderBottom: "1px solid #ccc",
-            textAlign: "center",
+            alignItems: "center",
+            justifyContent: "center",
           }}>
-          <Checkbox
-            checked={allSelected}
-            onChange={(e) => handleSelectAll(e.target.checked)}
-          />
-          <Typography sx={{ flex: 2, fontWeight: "bold", px: 11 }}>
-            Tên sản phẩm
-          </Typography>
-          <Typography sx={{ flex: 1, fontWeight: "bold", px: 1.5 }}>
-            Số lượng
-          </Typography>
-          <Typography sx={{ flex: 1, fontWeight: "bold" }}>Đơn giá</Typography>
-          <Typography sx={{ flex: 1, fontWeight: "bold" }}>Xoá</Typography>
-        </Box>
+          <Grid item xs={12} md={1}>
+            <Checkbox
+              checked={allSelected}
+              onChange={(e) => handleSelectAll(e.target.checked)}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={6.5}>
+            <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>
+              Sản phẩm
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={1.5}>
+            <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>
+              Số lượng
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={1.5}>
+            <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>
+              Đơn giá
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} md={1.5}>
+            <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>
+              Xoá
+            </Typography>
+          </Grid>
+        </Grid>
 
         {/* Cart Items */}
         <Box
           sx={{
-            flex: 1,
             overflowY: "auto",
             scrollbarWidth: "none", // Hide scrollbar for Firefox
             "&::-webkit-scrollbar": {
@@ -172,17 +190,42 @@ export default function Cart() {
             },
           }}>
           {cartItems.map((item) => (
-            <Box key={item.id} sx={{ display: "flex", alignItems: "center" }}>
-              <Checkbox
-                checked={item.selected}
-                onChange={() => handleSelectionChange(item.id)}
-              />
-              <CartItem
-                item={item}
-                onQuantityChange={handleQuantityChange}
-                onRemove={handleRemove}
-              />
-            </Box>
+            <Grid
+              contaniner
+              key={item.id}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}>
+              <Grid
+                item
+                md={1}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}>
+                <Checkbox
+                  checked={item.selected}
+                  onChange={() => handleSelectionChange(item.id)}
+                />
+              </Grid>
+              <Grid
+                item
+                md={11}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}>
+                <CartItem
+                  item={item}
+                  onQuantityChange={handleQuantityChange}
+                  onRemove={handleRemove}
+                />
+              </Grid>
+            </Grid>
           ))}
         </Box>
       </Box>
@@ -204,7 +247,7 @@ export default function Cart() {
           Tổng cộng
         </Typography>
         <Typography variant="body1" mb={2}>
-          Tổng tiền: {totalSum.toLocaleString()} VND
+          Tổng tiền: {totalSum.toLocaleString()}.000 VNĐ
         </Typography>
         <Button
           variant="contained"
@@ -233,76 +276,85 @@ const CartItem = ({ item, onQuantityChange, onRemove }) => {
   };
 
   return (
-    <Box
+    <Grid
+      container
+      spacing={3}
+      columns={{
+        xs: 11,
+        md: 11,
+      }}
       sx={{
+        backgroundColor: "#fff",
         display: "flex",
-        flexDirection: "row",
+        flexFlow: "row nowrap",
         alignItems: "center",
-        justifyContent: "space-between",
-        padding: "1rem",
         borderBottom: "1px solid #ccc",
-        gap: "1rem",
+        textAlign: "center",
       }}>
-      {/* Image */}
-      <Box
-        sx={{
-          width: "80px",
-          height: "80px",
-          overflow: "hidden",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          borderRadius: "8px",
-          border: "1px solid #ddd",
-        }}>
-        <img
-          src={item.image}
-          alt={item.name}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "contain",
-          }}
-        />
-      </Box>
+      <Grid item xs={1} md={6.5}>
+        <Box
+          sx={{
+            display: "flex",
+            flexFlow: "row nowrap",
+            alignItems: "center",
+            gap: "0.5rem",
+            padding: "1rem",
+            justifyContent: "flex-start",
+          }}>
+          <img
+            src={item.image}
+            alt={item.name}
+            style={{
+              width: "15%",
+              height: "auto",
+              objectFit: "cover",
+            }}
+          />
+          <Typography variant="body2" fontWeight="bold" textAlign="left">
+            {item.name}
+          </Typography>
+        </Box>
+      </Grid>
 
-      {/* Name and Price */}
-      <Box sx={{ flex: 1 }}>
-        <Typography variant="body1" fontWeight="bold">
-          {item.name}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {item.price.toLocaleString()} VND
-        </Typography>
-      </Box>
+      <Grid item xs={1} md={1.5}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            justifyContent: "center",
+          }}>
+          <TextField
+            type="number"
+            value={quantity}
+            onChange={(e) => handleQuantityChange(Number(e.target.value))}
+            inputProps={{
+              min: 1,
+              style: { textAlign: "center", width: "50px" },
+            }}
+            sx={{ maxWidth: "60px" }}
+          />
+        </Box>
+      </Grid>
 
-      {/* Quantity */}
-      <Box sx={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-        <TextField
-          type="number"
-          value={quantity}
-          onChange={(e) => handleQuantityChange(Number(e.target.value))}
-          inputProps={{
-            min: 1,
-            style: { textAlign: "center", width: "50px" },
-          }}
-          sx={{ maxWidth: "60px" }}
-        />
-      </Box>
+      <Grid item xs={1} md={1.5}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+          <Typography color="alert.main" fontWeight="bold" fontSize="1rem">
+            {item.price * quantity}.000 VNĐ
+          </Typography>
+        </Box>
+      </Grid>
 
-      {/* Total Price */}
-      <Box>
-        <Typography color="alert.main" fontWeight="bold">
-          {(item.price * quantity).toLocaleString()} VND
-        </Typography>
-      </Box>
-
-      {/* Remove Item */}
-      <Box>
+      <Grid item xs={1} md={1.5}>
         <IconButton onClick={() => onRemove(item.id)}>
           <Delete />
         </IconButton>
-      </Box>
-    </Box>
+      </Grid>
+    </Grid>
   );
 };
