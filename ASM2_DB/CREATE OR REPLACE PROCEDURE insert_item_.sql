@@ -40,28 +40,3 @@ BEGIN
     DELETE FROM Item WHERE ItemID = p_item_id;
 END;
 /
-
-CREATE OR REPLACE PROCEDURE AddUser (
-    p_username IN VARCHAR2,
-    p_email IN VARCHAR2,
-    p_role_name IN VARCHAR2 DEFAULT NULL -- Optional role assignment
-) AS
-    v_user_id NUMBER;
-    v_role_id NUMBER;
-BEGIN
-    -- Insert into UserGroup
-    INSERT INTO UserGroup (Username, Email, Password)
-    VALUES (p_username, p_email)
-    RETURNING UserID INTO v_user_id;
-
-    -- If a role is provided, assign it to the user
-    IF p_role_name IS NOT NULL THEN
-        SELECT RoleID INTO v_role_id
-        FROM Roles
-        WHERE RoleName = p_role_name;
-
-        INSERT INTO UserRoles (UserID, RoleID)
-        VALUES (v_user_id, v_role_id);
-    END IF;
-END;
-/
