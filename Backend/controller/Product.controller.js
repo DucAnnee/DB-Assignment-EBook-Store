@@ -1,22 +1,23 @@
 import AppError from "../utils/AppError.js";
-import dbconnection from "../config/db.config.js";
-import oracledb, { maxRows } from "oracledb";
+import config from "../config/db.config.js";
+import oracledb from "oracledb";
 
 export class ProductController{
     async getById(req, res, next) {
         try {
+            const dbconnection = await oracledb.getConnection(config);
             if (!dbconnection) {
-                throw new AppError("Database connection failed.", 400);
+                throw new AppError("Failed to connect to database!", 400);
             }
 
             const { id } = req.params;
-            console.log(id);
+            console.log({id});
 
             const result = await dbconnection.execute(
                 `SELECT *
                 FROM BOOK_INFO
-                WHERE ITEMID = :id;`,
-                [id],
+                WHERE ITEMID = :id`,
+                { id: { val: id } },
                 {
                     outFormat: oracledb.OUT_FORMAT_OBJECT
                 }
@@ -26,22 +27,25 @@ export class ProductController{
 
             res.status(200).json({
                 status: 'success',
-                results: 10,
-                data: result,
+                data: result.rows,
             });
         } catch (err) {
+            console.log(err);
             next(new AppError('Failed to get product info by id.', 400));
         }
     }
 
     async getByQuantity(req, res, next) {
         try {
+            const dbconnection = await oracledb.getConnection(config);
             if (!dbconnection) {
-                throw new AppError("Database connection failed.", 400);
+                throw new AppError("Failed to connect to database!", 400);
             }
 
             let quantity;
-            quantity = req.body[quantity];
+            console.log(req);
+            quantity = req.query.quantity;
+            console.log("Successfully received quantity", quantity);
             if (!quantity) {
                 console.log("No input quantity");
                 quantity = 10;
@@ -51,9 +55,8 @@ export class ProductController{
             const result = await dbconnection.execute(
                 `SELECT *
                 FROM BOOK_INFO`,
-                {
-                    maxRows: quantity
-                }
+                [],
+                { maxRows: quantity }
             );
 
             console.log(result);
@@ -61,9 +64,10 @@ export class ProductController{
             res.status(200).json({
                 status: 'success',
                 results: quantity,
-                data: result,
+                data: result.rows,
             });
         } catch (err) {
+            console.log(err);
             next(new AppError('Failed to get product info by quantity.', 400));
         }
     }

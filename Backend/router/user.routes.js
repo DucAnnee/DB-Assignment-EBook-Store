@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.post('/login', AuthController.prototype.login);
 router.post('/update', UserController.updateInfo);
+router.get('/:id', UserController.getUserInfo);
 
 export default router;
