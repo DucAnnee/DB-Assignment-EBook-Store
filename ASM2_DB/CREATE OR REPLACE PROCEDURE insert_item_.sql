@@ -14,7 +14,8 @@ CREATE OR REPLACE PROCEDURE insert_item_and_subclass (
     p_puplisher_contact VARCHAR2 DEFAULT NULL,
     p_authorID NUMBER DEFAULT NULL, 
     p_author_Name VARCHAR2 DEFAULT NULL, 
-    p_author_Bio VARCHAR2 DEFAULT NULL
+    p_author_Bio VARCHAR2 DEFAULT NULL,
+    p_genre VARCHAR2 DEFAULT NULL
 ) AS
     v_item_id NUMBER;
     v_publisher_id NUMBER;
@@ -45,6 +46,11 @@ BEGIN
                     VALUES (SEQ_PUBLISHER_ID.NEXTVAL, p_publisher_name, p_puplisher_address, p_puplisher_contact)
                     RETURNING PublisherID INTO v_publisher_id;
             END;
+        END IF;
+
+        IF p_genre IS NOT NULL THEN
+            INSERT INTO BOOKGENRE(BookID, Genre)
+            VALUES(v_item_id, p_genre);
         END IF;
 
         -- Step 4: Insert into PUBLISHES table

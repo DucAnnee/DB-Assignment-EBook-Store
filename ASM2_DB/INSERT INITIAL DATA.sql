@@ -1,49 +1,244 @@
 BEGIN
-    insert_item_and_subclass('Đất Rừng Phương Nam', 456000, 50, 'Tác phẩm kinh điển của Đoàn Giỏi', 'Book', 
-        '978-604-58-12345', NULL, NULL, 'NXB Kim Đồng', 'Hà Nội, Việt Nam', '0241234567', NULL, 'Đoàn Giỏi', 'Nhà văn nổi tiếng của Việt Nam');
+    -- Book 1: Đất Rừng Phương Nam
+    insert_item_and_subclass(
+        p_name => 'Đất Rừng Phương Nam', 
+        p_price => 456000, 
+        p_stock => 50, 
+        p_description => 'Tác phẩm kinh điển của Đoàn Giỏi', 
+        p_type => 'Book', 
+        p_isbn => '978-604-58-12345', 
+        p_publisher_name => 'NXB Kim Đồng', 
+        p_puplisher_address => 'Hà Nội, Việt Nam', 
+        p_puplisher_contact => '0241234567', 
+        p_author_Name => 'Đoàn Giỏi', 
+        p_author_Bio => 'Nhà văn nổi tiếng Việt Nam', 
+        p_genre => 'Adventure'
+    );
 
-    insert_item_and_subclass('Tuổi Thơ Dữ Dội', 312000, 60, 'Cuốn sách nổi tiếng về tuổi thơ thời chiến', 'Book', 
-        '978-604-67-98765', NULL, NULL, 'NXB Kim Đồng', 'Hà Nội, Việt Nam', '0241234567', NULL, 'Đoàn Giỏi', 'Nhà văn nổi tiếng của Việt Nam');
+    -- Book 2: Harry Potter và Bảo Bối Tử Thần
+    insert_item_and_subclass(
+        p_name => 'Harry Potter và Bảo Bối Tử Thần', 
+        p_price => 540000, 
+        p_stock => 30, 
+        p_description => 'Tập cuối của bộ truyện Harry Potter của J.K. Rowling', 
+        p_type => 'Book', 
+        p_isbn => '978-604-99-12301', 
+        p_publisher_name => 'NXB Trẻ', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0281234567', 
+        p_author_Name => 'J.K. Rowling', 
+        p_author_Bio => 'Tác giả nổi tiếng người Anh', 
+        p_genre => 'Fantasy'
+    );
 
-    insert_item_and_subclass('Truyện Kiều', 312000, 30, 'Tác phẩm văn học cổ điển của Nguyễn Du', 'Book', 
-        '978-604-30-12340', NULL, NULL, 'NXB Văn Học', 'Hà Nội, Việt Nam', '0247654321', NULL, 'Nguyễn Du', 'Tác giả của Truyện Kiều');
+    -- Book 3: Harry Potter và Chiếc Cốc Lửa
+    insert_item_and_subclass(
+        p_name => 'Harry Potter và Chiếc Cốc Lửa', 
+        p_price => 480000, 
+        p_stock => 40, 
+        p_description => 'Tập 4 của bộ truyện Harry Potter của J.K. Rowling', 
+        p_type => 'Book', 
+        p_isbn => '978-604-99-12302', 
+        p_publisher_name => 'NXB Trẻ', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0281234567', 
+        p_author_Name => 'J.K. Rowling', 
+        p_author_Bio => 'Tác giả nổi tiếng người Anh', 
+        p_genre => 'Fantasy'
+    );
 
-    insert_item_and_subclass('Chí Phèo', 264000, 45, 'Tác phẩm hiện thực của Nam Cao', 'Book', 
-        '978-604-58-54321', NULL, NULL, 'NXB Văn Học', 'Hà Nội, Việt Nam', '0247654321', NULL, 'Nam Cao', 'Nhà văn hiện thực nổi tiếng');
+    -- Book 4: Harry Potter và Hoàng Tử Lai
+    insert_item_and_subclass(
+        p_name => 'Harry Potter và Hoàng Tử Lai', 
+        p_price => 520000, 
+        p_stock => 35, 
+        p_description => 'Tập 6 của bộ truyện Harry Potter của J.K. Rowling', 
+        p_type => 'Book', 
+        p_isbn => '978-604-99-12303', 
+        p_publisher_name => 'NXB Trẻ', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0281234567', 
+        p_author_Name => 'J.K. Rowling', 
+        p_author_Bio => 'Tác giả nổi tiếng người Anh', 
+        p_genre => 'Fantasy'
+    );
 
-    insert_item_and_subclass('Mắt Biếc', 336000, 20, 'Tiểu thuyết nổi tiếng của Nguyễn Nhật Ánh', 'Book', 
-        '978-604-89-11111', NULL, NULL, 'NXB Trẻ', 'TP. Hồ Chí Minh', '0281234567', NULL, 'Nguyễn Nhật Ánh', 'Tác giả của Mắt Biếc');
+    -- Book 5: Làm Bạn Với Bầu Trời
+    insert_item_and_subclass(
+        p_name => 'Làm Bạn Với Bầu Trời', 
+        p_price => 300000, 
+        p_stock => 45, 
+        p_description => 'Cuốn sách của Nguyễn Ngọc Tư về tình bạn và cuộc sống', 
+        p_type => 'Book', 
+        p_isbn => '978-604-78-12367', 
+        p_publisher_name => 'NXB Trẻ', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0281234567', 
+        p_author_Name => 'Nguyễn Ngọc Tư', 
+        p_author_Bio => 'Nhà văn nổi tiếng của Việt Nam', 
+        p_genre => 'Fiction'
+    );
 
-    insert_item_and_subclass('Tôi Thấy Hoa Vàng Trên Cỏ Xanh', 360000, 15, 'Tác phẩm nổi bật của Nguyễn Nhật Ánh', 'Book', 
-        '978-604-78-22222', NULL, NULL, 'NXB Trẻ', 'TP. Hồ Chí Minh', '0281234567', NULL, 'Nguyễn Nhật Ánh', 'Tác giả của Tôi Thấy Hoa Vàng Trên Cỏ Xanh');
+    -- Book 6: Harry Potter và Hòn Đá Phù Thủy
+    insert_item_and_subclass(
+        p_name => 'Harry Potter và Hòn Đá Phù Thủy', 
+        p_price => 450000, 
+        p_stock => 50, 
+        p_description => 'Tập 1 của bộ truyện Harry Potter của J.K. Rowling', 
+        p_type => 'Book', 
+        p_isbn => '978-604-99-12304', 
+        p_publisher_name => 'NXB Trẻ', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0281234567', 
+        p_author_Name => 'J.K. Rowling', 
+        p_author_Bio => 'Tác giả nổi tiếng người Anh', 
+        p_genre => 'Fantasy'
+    );
 
-    insert_item_and_subclass('Rừng Na Uy', 384000, 25, 'Tác phẩm dịch của Haruki Murakami', 'Book', 
-        '978-604-78-45678', NULL, NULL, 'NXB Hội Nhà Văn', 'Hà Nội, Việt Nam', '0249876543', NULL, 'Haruki Murakami', 'Tác giả nổi tiếng của Nhật Bản');
+    -- Book 7: Ngồi Khóc Trên Cây
+    insert_item_and_subclass(
+        p_name => 'Ngồi Khóc Trên Cây', 
+        p_price => 320000, 
+        p_stock => 40, 
+        p_description => 'Một tác phẩm cảm động của Nguyễn Nhật Ánh', 
+        p_type => 'Book', 
+        p_isbn => '978-604-78-54321', 
+        p_publisher_name => 'NXB Trẻ', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0281234567', 
+        p_author_Name => 'Nguyễn Nhật Ánh', 
+        p_author_Bio => 'Tác giả văn học thiếu nhi nổi tiếng', 
+        p_genre => 'Romance'
+    );
 
-    insert_item_and_subclass('Nhà Giả Kim', 336000, 50, 'Tác phẩm dịch của Paulo Coelho', 'Book', 
-        '978-604-90-98765', NULL, NULL, 'NXB Hội Nhà Văn', 'Hà Nội, Việt Nam', '0249876543', NULL, 'Paulo Coelho', 'Tác giả của Nhà Giả Kim');
+    -- Book 8: Quán Gò Đi Lên
+    insert_item_and_subclass(
+        p_name => 'Quán Gò Đi Lên', 
+        p_price => 290000, 
+        p_stock => 30, 
+        p_description => 'Tác phẩm nổi tiếng của Nguyễn Ngọc Tư', 
+        p_type => 'Book', 
+        p_isbn => '978-604-78-98765', 
+        p_publisher_name => 'NXB Trẻ', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0281234567', 
+        p_author_Name => 'Nguyễn Ngọc Tư', 
+        p_author_Bio => 'Nhà văn nổi tiếng của Việt Nam', 
+        p_genre => 'Fiction'
+    );
 
-    insert_item_and_subclass('Lão Hạc', 240000, 55, 'Tác phẩm hiện thực Nam Cao', 'Book', 
-        '978-604-34-56789', NULL, NULL, 'NXB Văn Học', 'Hà Nội, Việt Nam', '0247654321', NULL, 'Nam Cao', 'Nhà văn hiện thực nổi tiếng');
+    -- Book 1: Đắc Nhân Tâm
+    insert_item_and_subclass(
+        p_name => 'Đắc Nhân Tâm', 
+        p_price => 290000, 
+        p_stock => 45, 
+        p_description => 'Cuốn sách kỹ năng sống nổi tiếng của Dale Carnegie', 
+        p_type => 'Book', 
+        p_isbn => '978-604-99-45678', 
+        p_publisher_name => 'NXB Tổng Hợp TP.HCM', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0289876543', 
+        p_author_Name => 'Dale Carnegie', 
+        p_author_Bio => 'Nhà văn và diễn giả người Mỹ nổi tiếng', 
+        p_genre => 'Self-Help'
+    );
 
-    insert_item_and_subclass('Dế Mèn Phiêu Lưu Ký', 312000, 40, 'Tác phẩm nổi tiếng của Tô Hoài', 'Book', 
-        '978-604-45-34567', NULL, NULL, 'NXB Kim Đồng', 'Hà Nội, Việt Nam', '0241234567', NULL, 'Tô Hoài', 'Nhà văn viết cho thiếu nhi');
+    -- Book 2: Cây Cam Ngọt Của Tôi
+    insert_item_and_subclass(
+        p_name => 'Cây Cam Ngọt Của Tôi', 
+        p_price => 310000, 
+        p_stock => 30, 
+        p_description => 'Tác phẩm nổi tiếng của José Mauro de Vasconcelos', 
+        p_type => 'Book', 
+        p_isbn => '978-604-78-45679', 
+        p_publisher_name => 'NXB Kim Đồng', 
+        p_puplisher_address => 'Hà Nội, Việt Nam', 
+        p_puplisher_contact => '0241234567', 
+        p_author_Name => 'José Mauro de Vasconcelos', 
+        p_author_Bio => 'Nhà văn người Brazil', 
+        p_genre => 'Fiction'
+    );
 
-    insert_item_and_subclass('Vợ Nhặt', 264000, 35, 'Truyện ngắn nổi bật của Kim Lân', 'Book', 
-        '978-604-90-45678', NULL, NULL, 'NXB Hội Nhà Văn', 'Hà Nội, Việt Nam', '0249876543', NULL, 'Kim Lân', 'Tác giả của Vợ Nhặt');
+    -- Book 3: Bố Già
+    insert_item_and_subclass(
+        p_name => 'Bố Già', 
+        p_price => 350000, 
+        p_stock => 25, 
+        p_description => 'Tiểu thuyết kinh điển của Mario Puzo', 
+        p_type => 'Book', 
+        p_isbn => '978-604-45-56788', 
+        p_publisher_name => 'NXB Hội Nhà Văn', 
+        p_puplisher_address => 'Hà Nội, Việt Nam', 
+        p_puplisher_contact => '0249876543', 
+        p_author_Name => 'Mario Puzo', 
+        p_author_Bio => 'Nhà văn người Mỹ nổi tiếng', 
+        p_genre => 'Crime'
+    );
 
-    insert_item_and_subclass('Bắt Trẻ Đồng Xanh', 360000, 25, 'Bản dịch từ tiểu thuyết The Catcher in the Rye', 'Book', 
-        '978-604-51-88888', NULL, NULL, 'NXB Trẻ', 'TP. Hồ Chí Minh', '0281234567', NULL, 'J.D. Salinger', 'Tác giả nổi tiếng của Mỹ');
+    -- Book 4: Không Gia Đình
+    insert_item_and_subclass(
+        p_name => 'Không Gia Đình', 
+        p_price => 320000, 
+        p_stock => 35, 
+        p_description => 'Tác phẩm nổi tiếng của Hector Malot', 
+        p_type => 'Book', 
+        p_isbn => '978-604-45-98765', 
+        p_publisher_name => 'NXB Kim Đồng', 
+        p_puplisher_address => 'Hà Nội, Việt Nam', 
+        p_puplisher_contact => '0241234567', 
+        p_author_Name => 'Hector Malot', 
+        p_author_Bio => 'Nhà văn người Pháp nổi tiếng', 
+        p_genre => 'Adventure'
+    );
 
-    insert_item_and_subclass('Người Thầy Đầu Tiên', 288000, 30, 'Tác phẩm dịch của Chingiz Aitmatov', 'Book', 
-        '978-604-12-78901', NULL, NULL, 'NXB Kim Đồng', 'Hà Nội, Việt Nam', '0241234567', NULL, 'Chingiz Aitmatov', 'Tác giả nổi tiếng Kyrgyzstan');
+    -- Book 5: Ông Già Và Biển Cả
+    insert_item_and_subclass(
+        p_name => 'Ông Già Và Biển Cả', 
+        p_price => 280000, 
+        p_stock => 50, 
+        p_description => 'Tác phẩm nổi tiếng của Ernest Hemingway', 
+        p_type => 'Book', 
+        p_isbn => '978-604-12-56789', 
+        p_publisher_name => 'NXB Văn Học', 
+        p_puplisher_address => 'Hà Nội, Việt Nam', 
+        p_puplisher_contact => '0246543210', 
+        p_author_Name => 'Ernest Hemingway', 
+        p_author_Bio => 'Nhà văn nổi tiếng người Mỹ', 
+        p_genre => 'Fiction'
+    );
 
-    insert_item_and_subclass('Tắt Đèn', 240000, 45, 'Tác phẩm hiện thực của Ngô Tất Tố', 'Book', 
-        '978-604-67-34567', NULL, NULL, 'NXB Văn Học', 'Hà Nội, Việt Nam', '0247654321', NULL, 'Ngô Tất Tố', 'Nhà văn hiện thực nổi tiếng');
+    -- Book 6: Chiến Binh Cầu Vồng
+    insert_item_and_subclass(
+        p_name => 'Chiến Binh Cầu Vồng', 
+        p_price => 340000, 
+        p_stock => 40, 
+        p_description => 'Cuốn sách của Andrea Hirata về tinh thần vượt khó', 
+        p_type => 'Book', 
+        p_isbn => '978-604-67-23456', 
+        p_publisher_name => 'NXB Trẻ', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0281234567', 
+        p_author_Name => 'Andrea Hirata', 
+        p_author_Bio => 'Nhà văn nổi tiếng người Indonesia', 
+        p_genre => 'Inspiration'
+    );
 
-    insert_item_and_subclass('Moby Dick', 360000, 20, 'Tác phẩm kinh điển của Herman Melville', 'Book', 
-        '978-0-141-43922-5', NULL, NULL, 'NXB Hội Nhà Văn', 'Hà Nội, Việt Nam', '0249876543', NULL, 'Herman Melville', 'Tác giả nổi tiếng của Mỹ');
-
+    -- Book 7: Số Đỏ
+    insert_item_and_subclass(
+        p_name => 'Số Đỏ', 
+        p_price => 300000, 
+        p_stock => 45, 
+        p_description => 'Tác phẩm châm biếm nổi tiếng của Vũ Trọng Phụng', 
+        p_type => 'Book', 
+        p_isbn => '978-604-45-34567', 
+        p_publisher_name => 'NXB Văn Học', 
+        p_puplisher_address => 'Hà Nội, Việt Nam', 
+        p_puplisher_contact => '0246543210', 
+        p_author_Name => 'Vũ Trọng Phụng', 
+        p_author_Bio => 'Nhà văn nổi tiếng của Việt Nam', 
+        p_genre => 'Satire'
+    );
+    
     COMMIT;
 END;
 /
@@ -65,17 +260,17 @@ END;
 
 BEGIN
     -- Insert Regular Users
-    INSERT INTO User_Group (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
+    INSERT INTO UserGroup (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
     VALUES (2001, 'nguyenvana', 'nguyenvana@gmail.com', '123 Lê Lợi, Hà Nội', '0901123456', 'M', 'N');
 
-    INSERT INTO User_Group (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
+    INSERT INTO UserGroup (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
     VALUES (2002, 'tranthib', 'tranthib@gmail.com', '456 Nguyễn Huệ, TP HCM', '0912234567', 'F', 'N');
 
-    INSERT INTO User_Group (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
+    INSERT INTO UserGroup (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
     VALUES (2004, 'lethihanh', 'lethihanh@gmail.com', '321 Lý Thái Tổ, Huế', '0934456789', 'F', 'N');
 
     -- Insert Manager Users
-    INSERT INTO User_Group (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
+    INSERT INTO UserGroup (UserID, Username, Email, Address, PhoneNum, Gender, isManager)
     VALUES (3001, 'admin_manager', 'manager1@toystore.com', '123 Admin Street, Hà Nội', '0987654321', 'M', 'Y');
 
     COMMIT;
