@@ -1,6 +1,6 @@
 import AppError from "../utils/AppError.js";
 import dbconnection from "../config/db.config.js";
-import oracledb, { maxRows } from "oracledb";
+import oracledb from "oracledb";
 
 export class OrderController {
     async getCurrentCart(req, res, next) {

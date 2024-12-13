@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Paper,
@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import sampleImage from "../assets/hp-hoangtulai.jpg";
 import { useNavigate } from "react-router";
+import api from "../api/axios";
 
 export default function Product() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,37 +23,59 @@ export default function Product() {
   const itemsPerPage = 24;
 
   const [products, setProducts] = useState([
-    { id: 1, name: "Product 1", category: "Book", price: 150 },
-    { id: 2, name: "Product 2", category: "Toy", price: 200 },
-    { id: 3, name: "Product 3", category: "Book", price: 150 },
-    { id: 4, name: "Product 4", category: "Toy", price: 200 },
-    { id: 5, name: "Product 5", category: "Book", price: 150 },
-    { id: 6, name: "Product 6", category: "Toy", price: 200 },
-    { id: 7, name: "Product 7", category: "Book", price: 150 },
-    { id: 8, name: "Product 8", category: "Toy", price: 200 },
-    { id: 9, name: "Product 9", category: "Book", price: 150 },
-    { id: 10, name: "Product 10", category: "Toy", price: 200 },
-    { id: 11, name: "Product 11", category: "Book", price: 150 },
-    { id: 12, name: "Product 12", category: "Toy", price: 200 },
-    { id: 13, name: "Product 13", category: "Book", price: 150 },
-    { id: 14, name: "Product 14", category: "Toy", price: 200 },
-    { id: 15, name: "Product 15", category: "Book", price: 150 },
-    { id: 16, name: "Product 16", category: "Toy", price: 200 },
-    { id: 17, name: "Product 17", category: "Book", price: 150 },
-    { id: 18, name: "Product 18", category: "Toy", price: 200 },
-    { id: 19, name: "Product 19", category: "Book", price: 150 },
-    { id: 20, name: "Product 20", category: "Toy", price: 200 },
-    { id: 21, name: "Product 21", category: "Book", price: 150 },
-    { id: 22, name: "Product 22", category: "Toy", price: 200 },
-    { id: 23, name: "Product 23", category: "Book", price: 150 },
-    { id: 24, name: "Product 24", category: "Toy", price: 200 },
-    { id: 25, name: "Product 25", category: "Book", price: 150 },
-    { id: 26, name: "Product 26", category: "Toy", price: 200 },
-    { id: 27, name: "Product 27", category: "Book", price: 150 },
-    { id: 28, name: "Product 28", category: "Toy", price: 200 },
-    { id: 29, name: "Product 29", category: "Book", price: 150 },
-    { id: 30, name: "Product 30", category: "Toy", price: 200 },
+    // { id: 1, name: "Product 1", category: "Book", price: 150 },
+    // { id: 2, name: "Product 2", category: "Toy", price: 200 },
+    // { id: 3, name: "Product 3", category: "Book", price: 150 },
+    // { id: 4, name: "Product 4", category: "Toy", price: 200 },
+    // { id: 5, name: "Product 5", category: "Book", price: 150 },
+    // { id: 6, name: "Product 6", category: "Toy", price: 200 },
+    // { id: 7, name: "Product 7", category: "Book", price: 150 },
+    // { id: 8, name: "Product 8", category: "Toy", price: 200 },
+    // { id: 9, name: "Product 9", category: "Book", price: 150 },
+    // { id: 10, name: "Product 10", category: "Toy", price: 200 },
+    // { id: 11, name: "Product 11", category: "Book", price: 150 },
+    // { id: 12, name: "Product 12", category: "Toy", price: 200 },
+    // { id: 13, name: "Product 13", category: "Book", price: 150 },
+    // { id: 14, name: "Product 14", category: "Toy", price: 200 },
+    // { id: 15, name: "Product 15", category: "Book", price: 150 },
+    // { id: 16, name: "Product 16", category: "Toy", price: 200 },
+    // { id: 17, name: "Product 17", category: "Book", price: 150 },
+    // { id: 18, name: "Product 18", category: "Toy", price: 200 },
+    // { id: 19, name: "Product 19", category: "Book", price: 150 },
+    // { id: 20, name: "Product 20", category: "Toy", price: 200 },
+    // { id: 21, name: "Product 21", category: "Book", price: 150 },
+    // { id: 22, name: "Product 22", category: "Toy", price: 200 },
+    // { id: 23, name: "Product 23", category: "Book", price: 150 },
+    // { id: 24, name: "Product 24", category: "Toy", price: 200 },
+    // { id: 25, name: "Product 25", category: "Book", price: 150 },
+    // { id: 26, name: "Product 26", category: "Toy", price: 200 },
+    // { id: 27, name: "Product 27", category: "Book", price: 150 },
+    // { id: 28, name: "Product 28", category: "Toy", price: 200 },
+    // { id: 29, name: "Product 29", category: "Book", price: 150 },
+    // { id: 30, name: "Product 30", category: "Toy", price: 200 },
   ]);
+
+  // useEffect
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const params = {
+          quantity: 48,
+        };
+
+        const response = await api.get("/api/v1/product", {
+          params,
+        });
+
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const filteredProducts = products.filter((product) => {
     return (

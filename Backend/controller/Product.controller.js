@@ -1,6 +1,6 @@
 import AppError from "../utils/AppError.js";
 import dbconnection from "../config/db.config.js";
-import oracledb, { maxRows } from "oracledb";
+import oracledb from "oracledb";
 
 export class ProductController{
     async getById(req, res, next) {
@@ -40,7 +40,9 @@ export class ProductController{
             }
 
             let quantity;
-            quantity = req.body[quantity];
+            console.log(req.body);
+            quantity = req.body.quantity;
+            console.log("Successfully received quantity ", quantity);
             if (!quantity) {
                 console.log("No input quantity");
                 quantity = 10;
@@ -50,9 +52,9 @@ export class ProductController{
             const result = await dbconnection.execute(
                 `SELECT *
                 FROM BOOK_INFO`,
-                {
-                    maxRows: quantity
-                }
+                // {
+                //     maxRows: quantity
+                // }
             );
 
             console.log(result);
