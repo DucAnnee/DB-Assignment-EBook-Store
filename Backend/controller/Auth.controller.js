@@ -1,9 +1,6 @@
-import signToken from "../utils/jwtToken.js";
 import AppError from "../utils/AppError.js";
 import config  from "../config/db.config.js";
-import { promisify } from 'util';
-import jwt from 'jsonwebtoken';
-import { execFile } from "child_process";
+import OracleDB from "oracledb";
 
 export class AuthController {
     async login (req,res,next) {
