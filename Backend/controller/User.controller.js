@@ -68,7 +68,12 @@ export class UserController {
                 throw new AppError("Failed to connect to database!", 400);
             }
 
-            
+            const id = req.params;
+
+            const result = await dbconnection.execute(
+                ``,
+                
+            )
         } catch (err) {
             console.log(err);
             next(new AppError('Failed to get product info by id.', 400));

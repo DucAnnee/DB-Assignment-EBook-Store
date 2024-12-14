@@ -1,0 +1,16 @@
+DROP TABLE DELIVERYADDRESS CASCADE CONSTRAINTS;
+
+CREATE TABLE DELIVERYADDRESS (
+    AddressID NUMBER,
+    UserID NUMBER,
+    FullName VARCHAR2(100),
+    Phone VARCHAR2(15),
+    DetailAddress VARCHAR2(255),
+    Ward VARCHAR2(50),
+    District VARCHAR2(50),
+    City VARCHAR2(50),
+    Province VARCHAR2(50),
+    -- Composite Primary Key (AddressID + UserID)
+    PRIMARY KEY (AddressID, UserID),
+    FOREIGN KEY (UserID) REFERENCES USERGROUP(UserID) ON DELETE CASCADE
+);
