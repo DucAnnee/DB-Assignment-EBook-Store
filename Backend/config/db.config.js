@@ -3,7 +3,7 @@ import OracleDB from "oracledb";
 const config = {
   user: 'c##StoreAdmin',
   password: 'Admin123',
-  connectString: 'localhost:1521/xe'
+  connectString: '172.31.240.1:1521/xe'
 }
 
 let dbconnection;

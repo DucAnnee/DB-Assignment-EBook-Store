@@ -1,11 +1,14 @@
 CREATE SEQUENCE SEQ_PUBLISHER_ID START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE SEQ_AUTHOR_ID START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE SEQ_IMAGE_ID START WITH 1 INCREMENT BY 1;
+
 CREATE OR REPLACE PROCEDURE insert_item_and_subclass (
     p_name VARCHAR2,
     p_price NUMBER,
     p_stock NUMBER,
     p_description VARCHAR2,
     p_type VARCHAR2,
+    p_imagePath VARCHAR2 DEFAULT NULL,
     p_isbn VARCHAR2 DEFAULT NULL,
     p_production_date DATE DEFAULT NULL,
     p_manufacturer VARCHAR2 DEFAULT NULL,
@@ -21,27 +24,27 @@ CREATE OR REPLACE PROCEDURE insert_item_and_subclass (
     v_publisher_id NUMBER;
     v_author_id NUMBER;
 BEGIN
-    -- Step 1: Insert into Item table
     INSERT INTO Item (Name, Price, Stock, Description)
     VALUES (p_name, p_price, p_stock, p_description)
     RETURNING ItemID INTO v_item_id;
 
-    -- Step 2: Handle subclass insertion (Book or Toys)
+    IF p_imagePath IS NOT NULL THEN 
+        INSERT INTO ITEMIMAGES(ImageID, ItemID, ImagePath)
+        VALUES (SEQ_IMAGE_ID.nextval, v_item_id, p_imagePath);
+    END IF;
+
     IF p_type = 'Book' THEN
         INSERT INTO Book (ItemID, ISBN, PublicationDate)
         VALUES (v_item_id, p_isbn, SYSDATE);
 
-        -- Step 3: Handle Publisher (Reuse ID if exists)
         IF p_publisher_name IS NOT NULL THEN
             BEGIN
-                -- Check if publisher exists
                 SELECT PublisherID INTO v_publisher_id
                 FROM Publisher
                 WHERE Name = p_publisher_name
                 FETCH FIRST 1 ROW ONLY;
             EXCEPTION
                 WHEN NO_DATA_FOUND THEN
-                    -- Insert new Publisher if not exists
                     INSERT INTO Publisher (PublisherID, Name, Address, ContactINFO)
                     VALUES (SEQ_PUBLISHER_ID.NEXTVAL, p_publisher_name, p_puplisher_address, p_puplisher_contact)
                     RETURNING PublisherID INTO v_publisher_id;
@@ -53,33 +56,27 @@ BEGIN
             VALUES(v_item_id, p_genre);
         END IF;
 
-        -- Step 4: Insert into PUBLISHES table
         INSERT INTO PUBLISHES (PublisherID, ItemID)
         VALUES (v_publisher_id, v_item_id);
 
-        -- Step 5: Handle Author (Reuse ID if exists)
         IF p_author_Name IS NOT NULL THEN
             BEGIN
-                -- Check if author exists
                 SELECT AuthorID INTO v_author_id
                 FROM Author
                 WHERE FULLName = p_author_Name
                 FETCH FIRST 1 ROW ONLY;
             EXCEPTION
                 WHEN NO_DATA_FOUND THEN
-                    -- Insert new Author if not exists
                     INSERT INTO Author (AuthorID, FullName, Bio)
                     VALUES (SEQ_AUTHOR_ID.NEXTVAL, p_author_Name, p_author_Bio)
                     RETURNING AuthorID INTO v_author_id;
             END;
         END IF;
 
-        -- Step 6: Insert into WRITES table
         INSERT INTO WRITES (AuthorID, ItemID)
         VALUES (v_author_id, v_item_id);
 
     ELSIF p_type = 'Toys' THEN
-        -- Insert into Toys table
         INSERT INTO Toys (ItemID, ProductionDate, Manufacturer)
         VALUES (v_item_id, p_production_date, p_manufacturer);
     END IF;

@@ -94,6 +94,114 @@ BEGIN
         p_author_Bio => 'Tác giả nổi tiếng người Anh', 
         p_genre => 'Fantasy'
     );
+    insert_item_and_subclass(
+        p_name => 'Harry Potter và Phòng Chứa Bí Mật', 
+        p_price => 470000, 
+        p_stock => 30, 
+        p_description => 'Tập 2 của bộ truyện Harry Potter của J.K. Rowling', 
+        p_type => 'Book', 
+        p_isbn => '978-604-99-12305', 
+        p_publisher_name => 'NXB Trẻ', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0281234567', 
+        p_author_Name => 'J.K. Rowling', 
+        p_author_Bio => 'Tác giả nổi tiếng người Anh', 
+        p_genre => 'Fantasy'
+    );
+
+    insert_item_and_subclass(
+        p_name => 'Những Kẻ Xuất Chúng', 
+        p_price => 340000, 
+        p_stock => 25, 
+        p_description => 'Cuốn sách về những người thay đổi thế giới của Malcolm Gladwell', 
+        p_type => 'Book', 
+        p_isbn => '978-604-78-34567', 
+        p_publisher_name => 'NXB Tổng Hợp TP.HCM', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0289876543', 
+        p_author_Name => 'Malcolm Gladwell', 
+        p_author_Bio => 'Nhà văn và nhà báo nổi tiếng người Canada', 
+        p_genre => 'Non-Fiction'
+    );
+
+    insert_item_and_subclass(
+        p_name => 'Mắt Biếc', 
+        p_price => 330000, 
+        p_stock => 40, 
+        p_description => 'Tác phẩm lãng mạn nổi tiếng của Nguyễn Nhật Ánh', 
+        p_type => 'Book', 
+        p_isbn => '978-604-89-67890', 
+        p_publisher_name => 'NXB Trẻ', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0281234567', 
+        p_author_Name => 'Nguyễn Nhật Ánh', 
+        p_author_Bio => 'Tác giả văn học thiếu nhi nổi tiếng', 
+        p_genre => 'Romance'
+    );
+    
+    -- Book: Harry Potter và Phòng Chứa Bí Mật
+    insert_item_and_subclass(
+        p_name => 'Harry Potter và Phòng Chứa Bí Mật', 
+        p_price => 470000, 
+        p_stock => 30, 
+        p_description => 'Tập 2 của bộ truyện Harry Potter của J.K. Rowling', 
+        p_type => 'Book', 
+        p_isbn => '978-604-99-12305', 
+        p_publisher_name => 'NXB Trẻ', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0281234567', 
+        p_author_Name => 'J.K. Rowling', 
+        p_author_Bio => 'Tác giả nổi tiếng người Anh', 
+        p_genre => 'Fantasy'
+    );
+
+    -- Book: Những Kẻ Xuất Chúng
+    insert_item_and_subclass(
+        p_name => 'Những Kẻ Xuất Chúng', 
+        p_price => 340000, 
+        p_stock => 25, 
+        p_description => 'Cuốn sách về những người thay đổi thế giới của Malcolm Gladwell', 
+        p_type => 'Book', 
+        p_isbn => '978-604-78-34567', 
+        p_publisher_name => 'NXB Tổng Hợp TP.HCM', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0289876543', 
+        p_author_Name => 'Malcolm Gladwell', 
+        p_author_Bio => 'Nhà văn và nhà báo nổi tiếng người Canada', 
+        p_genre => 'Non-Fiction'
+    );
+
+    -- Book: Mắt Biếc
+    insert_item_and_subclass(
+        p_name => 'Mắt Biếc', 
+        p_price => 330000, 
+        p_stock => 40, 
+        p_description => 'Tác phẩm lãng mạn nổi tiếng của Nguyễn Nhật Ánh', 
+        p_type => 'Book', 
+        p_isbn => '978-604-89-67890', 
+        p_publisher_name => 'NXB Trẻ', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0281234567', 
+        p_author_Name => 'Nguyễn Nhật Ánh', 
+        p_author_Bio => 'Tác giả văn học thiếu nhi nổi tiếng', 
+        p_genre => 'Romance'
+    );
+
+    -- Book: Tôi Thấy Hoa Vàng Trên Cỏ Xanh
+    insert_item_and_subclass(
+        p_name => 'Tôi Thấy Hoa Vàng Trên Cỏ Xanh', 
+        p_price => 350000, 
+        p_stock => 35, 
+        p_description => 'Một tác phẩm nổi tiếng của Nguyễn Nhật Ánh về tuổi thơ', 
+        p_type => 'Book', 
+        p_isbn => '978-604-78-23456', 
+        p_publisher_name => 'NXB Trẻ', 
+        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
+        p_puplisher_contact => '0281234567', 
+        p_author_Name => 'Nguyễn Nhật Ánh', 
+        p_author_Bio => 'Tác giả văn học thiếu nhi nổi tiếng', 
+        p_genre => 'Fiction'
+    );
 
     -- Book 7: Ngồi Khóc Trên Cây
     insert_item_and_subclass(
