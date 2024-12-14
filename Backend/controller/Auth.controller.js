@@ -1,6 +1,7 @@
 import AppError from "../utils/AppError.js";
 import config  from "../config/db.config.js";
 import OracleDB from "oracledb";
+import signToken from "../utils/jwtToken.js";
 
 export class AuthController {
     async login (req,res,next) {
@@ -25,10 +26,11 @@ export class AuthController {
 
             console.log(result);
 
-            res.status(200).json({
-                status: 'success',
-                data: result.rows,
-            });
+            // res.status(200).json({
+            //     status: 'success',
+            //     data: result.rows,
+            // });
+            signToken(result.rows[0], 200, res);
         } catch (err) {
             console.log(err);
             next(new AppError('Failed to get product info by id.', 400));
