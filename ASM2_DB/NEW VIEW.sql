@@ -42,7 +42,7 @@ JOIN
     Toys t ON i.ItemID = t.ItemID;;
 
 
-CREATE VIEW ALLITEM AS
+CREATE OR REPLACE VIEW ALLITEM AS
 SELECT 
     i.ItemID,
     i.Name,
@@ -60,7 +60,12 @@ SELECT
     p.ContactInfo AS PublisherContactInfo,
     -- Toy-specific columns, NULL if item is not a toy
     t.ProductionDate,
-    t.Manufacturer
+    t.Manufacturer,
+    CASE
+        WHEN b.ItemID IS NOT NULL THEN 'book'   -- If Item is in Book table, it's a Book
+        WHEN t.ItemID IS NOT NULL THEN 'toy'    -- If Item is in Toys table, it's a Toy
+        ELSE 'Other'                           -- If Item is neither in Book nor Toys table
+    END AS ITEMTYPE
 FROM 
     Item i
 -- LEFT JOIN with Book to get book-specific information

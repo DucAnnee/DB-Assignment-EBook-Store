@@ -60,6 +60,20 @@ export class UserController {
             next(new AppError('Failed to get product info by id.', 400));
         }
     }
+
+    async getUserAddress(req, res, next) {
+        try {
+            const dbconnection = await OracleDB.getConnection(config);
+            if (!dbconnection) {
+                throw new AppError("Failed to connect to database!", 400);
+            }
+
+            
+        } catch (err) {
+            console.log(err);
+            next(new AppError('Failed to get product info by id.', 400));
+        }
+    }
 }
 
 export default new UserController();
