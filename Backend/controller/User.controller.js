@@ -68,12 +68,23 @@ export class UserController {
                 throw new AppError("Failed to connect to database!", 400);
             }
 
-            const id = req.params;
+            const { id } = req.params;
+            console.log(id);
 
             const result = await dbconnection.execute(
-                ``,
-                
-            )
+                `SELECT *
+                FROM DELIVERYADDRESS
+                WHERE USERID = :id`,
+                { id: { val: id } },
+                { outFormat: OracleDB.OUT_FORMAT_OBJECT }
+            );
+
+            console.log(result);
+
+            res.status(200).json({
+                status: 'success',
+                data: result.rows,
+            });
         } catch (err) {
             console.log(err);
             next(new AppError('Failed to get product info by id.', 400));
