@@ -1,6 +1,6 @@
 SELECT 
     B.ItemID,
-    I.Name AS BookName,
+    I.Name,
     A.FullName AS AuthorName,
     P.Name AS PublisherName,
     B.ISBN,
