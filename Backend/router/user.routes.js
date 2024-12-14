@@ -5,7 +5,7 @@ import UserController from '../controller/User.controller.js';
 const router = express.Router();
 
 router.post('/login', AuthController.prototype.login);
-router.post('/update', UserController.updateInfo);
 router.get('/:id', UserController.getUserInfo);
+router.post('/:id', UserController.updateInfo);
 
 export default router;

@@ -11,24 +11,54 @@ export class ProductController{
             }
 
             const { id } = req.params;
-            console.log({id});
+            console.log(id);
 
             const result = await dbconnection.execute(
-                `SELECT *
-                FROM BOOK_INFO
-                WHERE ITEMID = :id`,
+                `SELECT 
+                    i.ItemID, 
+                    i.Name, 
+                    CASE 
+                        WHEN b.ItemID IS NOT NULL THEN 'Book'
+                        WHEN t.ItemID IS NOT NULL THEN 'Toy'
+                        ELSE 'Not Found' 
+                    END AS ItemType
+                FROM 
+                    Item i
+                LEFT JOIN 
+                    Book b ON i.ItemID = b.ItemID
+                LEFT JOIN 
+                    Toys t ON i.ItemID = t.ItemID
+                WHERE 
+                    i.ItemID = :id`,
                 { id: { val: id } },
                 {
                     outFormat: oracledb.OUT_FORMAT_OBJECT
                 }
             );
 
-            console.log(result);
+            console.log(result.rows);
 
-            res.status(200).json({
-                status: 'success',
-                data: result.rows,
-            });
+            if (result.rows.length > 0) {
+                const item = result.rows[0];
+                console.log(`Item Type: ${item.ITEMTYPE}`);
+    
+                // Conditional logic to call DoA or DoB based on ItemType
+                if (item.ITEMTYPE === 'Book') {
+                    console.log("Book");
+                } else if (item.ITEMTYPE === 'Toy') {
+                    console.log("Toy");
+                } else {
+                    console.log("Item not found or is neither Book nor Toy");
+                }
+    
+                // Respond with the data
+                res.status(200).json({
+                    status: 'success',
+                    data: item,
+                });
+            } else {
+                throw new AppError('Item not found.', 404);
+            }    
         } catch (err) {
             console.log(err);
             next(new AppError('Failed to get product info by id.', 400));
