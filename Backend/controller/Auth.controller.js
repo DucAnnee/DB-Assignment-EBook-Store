@@ -18,8 +18,8 @@ export class AuthController {
             const result = await dbconnection.execute(
                 `SELECT * 
                 FROM usergroup
-                WHERE USERNAME = :user`,
-                { id: { val: username } },
+                WHERE USERNAME = :username`,
+                { username: { val: username } },
                 { outFormat: OracleDB.OUT_FORMAT_OBJECT }
             );
 
