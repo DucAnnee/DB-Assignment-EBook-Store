@@ -6,6 +6,7 @@ BEGIN
         p_stock => 50, 
         p_description => 'Tác phẩm kinh điển của Đoàn Giỏi', 
         p_type => 'Book', 
+        p_imagePath => 'dat-rung-phuong-nam.jpg',
         p_isbn => '978-604-58-12345', 
         p_publisher_name => 'NXB Kim Đồng', 
         p_puplisher_address => 'Hà Nội, Việt Nam', 
@@ -22,6 +23,7 @@ BEGIN
         p_stock => 30, 
         p_description => 'Tập cuối của bộ truyện Harry Potter của J.K. Rowling', 
         p_type => 'Book', 
+        p_imagePath => 'hp-baoboituthan.jpg',
         p_isbn => '978-604-99-12301', 
         p_publisher_name => 'NXB Trẻ', 
         p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
@@ -38,6 +40,7 @@ BEGIN
         p_stock => 40, 
         p_description => 'Tập 4 của bộ truyện Harry Potter của J.K. Rowling', 
         p_type => 'Book', 
+        p_imagePath => 'hp-chieccoclua.jpg',
         p_isbn => '978-604-99-12302', 
         p_publisher_name => 'NXB Trẻ', 
         p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
@@ -54,6 +57,7 @@ BEGIN
         p_stock => 35, 
         p_description => 'Tập 6 của bộ truyện Harry Potter của J.K. Rowling', 
         p_type => 'Book', 
+        p_imagePath => 'hp-hoangtulai.jpg',
         p_isbn => '978-604-99-12303', 
         p_publisher_name => 'NXB Trẻ', 
         p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
@@ -70,6 +74,7 @@ BEGIN
         p_stock => 45, 
         p_description => 'Cuốn sách của Nguyễn Ngọc Tư về tình bạn và cuộc sống', 
         p_type => 'Book', 
+        p_imagePath => 'nna-lambanvoibautroi.jpg',
         p_isbn => '978-604-78-12367', 
         p_publisher_name => 'NXB Trẻ', 
         p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
@@ -86,6 +91,7 @@ BEGIN
         p_stock => 50, 
         p_description => 'Tập 1 của bộ truyện Harry Potter của J.K. Rowling', 
         p_type => 'Book', 
+        p_imagePath => 'hp-hondaphuthuy.jpg',
         p_isbn => '978-604-99-12304', 
         p_publisher_name => 'NXB Trẻ', 
         p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
@@ -100,6 +106,7 @@ BEGIN
         p_stock => 30, 
         p_description => 'Tập 2 của bộ truyện Harry Potter của J.K. Rowling', 
         p_type => 'Book', 
+        p_imagePath => 'hp-phongchuabimat.jpg',
         p_isbn => '978-604-99-12305', 
         p_publisher_name => 'NXB Trẻ', 
         p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
@@ -107,21 +114,6 @@ BEGIN
         p_author_Name => 'J.K. Rowling', 
         p_author_Bio => 'Tác giả nổi tiếng người Anh', 
         p_genre => 'Fantasy'
-    );
-
-    insert_item_and_subclass(
-        p_name => 'Những Kẻ Xuất Chúng', 
-        p_price => 340000, 
-        p_stock => 25, 
-        p_description => 'Cuốn sách về những người thay đổi thế giới của Malcolm Gladwell', 
-        p_type => 'Book', 
-        p_isbn => '978-604-78-34567', 
-        p_publisher_name => 'NXB Tổng Hợp TP.HCM', 
-        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
-        p_puplisher_contact => '0289876543', 
-        p_author_Name => 'Malcolm Gladwell', 
-        p_author_Bio => 'Nhà văn và nhà báo nổi tiếng người Canada', 
-        p_genre => 'Non-Fiction'
     );
 
     insert_item_and_subclass(
@@ -130,6 +122,7 @@ BEGIN
         p_stock => 40, 
         p_description => 'Tác phẩm lãng mạn nổi tiếng của Nguyễn Nhật Ánh', 
         p_type => 'Book', 
+        p_imagePath => 'nna - matbiec.jpg',
         p_isbn => '978-604-89-67890', 
         p_publisher_name => 'NXB Trẻ', 
         p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
@@ -137,22 +130,6 @@ BEGIN
         p_author_Name => 'Nguyễn Nhật Ánh', 
         p_author_Bio => 'Tác giả văn học thiếu nhi nổi tiếng', 
         p_genre => 'Romance'
-    );
-    
-    -- Book: Harry Potter và Phòng Chứa Bí Mật
-    insert_item_and_subclass(
-        p_name => 'Harry Potter và Phòng Chứa Bí Mật', 
-        p_price => 470000, 
-        p_stock => 30, 
-        p_description => 'Tập 2 của bộ truyện Harry Potter của J.K. Rowling', 
-        p_type => 'Book', 
-        p_isbn => '978-604-99-12305', 
-        p_publisher_name => 'NXB Trẻ', 
-        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
-        p_puplisher_contact => '0281234567', 
-        p_author_Name => 'J.K. Rowling', 
-        p_author_Bio => 'Tác giả nổi tiếng người Anh', 
-        p_genre => 'Fantasy'
     );
 
     -- Book: Những Kẻ Xuất Chúng
@@ -162,6 +139,7 @@ BEGIN
         p_stock => 25, 
         p_description => 'Cuốn sách về những người thay đổi thế giới của Malcolm Gladwell', 
         p_type => 'Book', 
+        p_imagePath => 'nhungkexuatchung.jpg',
         p_isbn => '978-604-78-34567', 
         p_publisher_name => 'NXB Tổng Hợp TP.HCM', 
         p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
@@ -171,22 +149,6 @@ BEGIN
         p_genre => 'Non-Fiction'
     );
 
-    -- Book: Mắt Biếc
-    insert_item_and_subclass(
-        p_name => 'Mắt Biếc', 
-        p_price => 330000, 
-        p_stock => 40, 
-        p_description => 'Tác phẩm lãng mạn nổi tiếng của Nguyễn Nhật Ánh', 
-        p_type => 'Book', 
-        p_isbn => '978-604-89-67890', 
-        p_publisher_name => 'NXB Trẻ', 
-        p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
-        p_puplisher_contact => '0281234567', 
-        p_author_Name => 'Nguyễn Nhật Ánh', 
-        p_author_Bio => 'Tác giả văn học thiếu nhi nổi tiếng', 
-        p_genre => 'Romance'
-    );
-
     -- Book: Tôi Thấy Hoa Vàng Trên Cỏ Xanh
     insert_item_and_subclass(
         p_name => 'Tôi Thấy Hoa Vàng Trên Cỏ Xanh', 
@@ -194,6 +156,7 @@ BEGIN
         p_stock => 35, 
         p_description => 'Một tác phẩm nổi tiếng của Nguyễn Nhật Ánh về tuổi thơ', 
         p_type => 'Book', 
+        p_imagePath => 'nna - toithayhoavangtrencoxanh.jpg',
         p_isbn => '978-604-78-23456', 
         p_publisher_name => 'NXB Trẻ', 
         p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
@@ -210,6 +173,7 @@ BEGIN
         p_stock => 40, 
         p_description => 'Một tác phẩm cảm động của Nguyễn Nhật Ánh', 
         p_type => 'Book', 
+        p_imagePath => 'nna-ngoikhoctrencay.jpg',
         p_isbn => '978-604-78-54321', 
         p_publisher_name => 'NXB Trẻ', 
         p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
@@ -226,6 +190,7 @@ BEGIN
         p_stock => 30, 
         p_description => 'Tác phẩm nổi tiếng của Nguyễn Ngọc Tư', 
         p_type => 'Book', 
+        p_imagePath => 'nna-quangodilen.jpg',
         p_isbn => '978-604-78-98765', 
         p_publisher_name => 'NXB Trẻ', 
         p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
@@ -242,6 +207,7 @@ BEGIN
         p_stock => 45, 
         p_description => 'Cuốn sách kỹ năng sống nổi tiếng của Dale Carnegie', 
         p_type => 'Book', 
+        p_imagePath => 'dacnhantam86.jpg',
         p_isbn => '978-604-99-45678', 
         p_publisher_name => 'NXB Tổng Hợp TP.HCM', 
         p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
@@ -258,6 +224,7 @@ BEGIN
         p_stock => 30, 
         p_description => 'Tác phẩm nổi tiếng của José Mauro de Vasconcelos', 
         p_type => 'Book', 
+        p_imagePath => 'caycamngotcuatoi01.jpg',
         p_isbn => '978-604-78-45679', 
         p_publisher_name => 'NXB Kim Đồng', 
         p_puplisher_address => 'Hà Nội, Việt Nam', 
@@ -274,6 +241,7 @@ BEGIN
         p_stock => 25, 
         p_description => 'Tiểu thuyết kinh điển của Mario Puzo', 
         p_type => 'Book', 
+        p_imagePath => 'bo-gia_1_1.jpg',
         p_isbn => '978-604-45-56788', 
         p_publisher_name => 'NXB Hội Nhà Văn', 
         p_puplisher_address => 'Hà Nội, Việt Nam', 
@@ -283,38 +251,6 @@ BEGIN
         p_genre => 'Crime'
     );
 
-    -- Book 4: Không Gia Đình
-    insert_item_and_subclass(
-        p_name => 'Không Gia Đình', 
-        p_price => 320000, 
-        p_stock => 35, 
-        p_description => 'Tác phẩm nổi tiếng của Hector Malot', 
-        p_type => 'Book', 
-        p_isbn => '978-604-45-98765', 
-        p_publisher_name => 'NXB Kim Đồng', 
-        p_puplisher_address => 'Hà Nội, Việt Nam', 
-        p_puplisher_contact => '0241234567', 
-        p_author_Name => 'Hector Malot', 
-        p_author_Bio => 'Nhà văn người Pháp nổi tiếng', 
-        p_genre => 'Adventure'
-    );
-
-    -- Book 5: Ông Già Và Biển Cả
-    insert_item_and_subclass(
-        p_name => 'Ông Già Và Biển Cả', 
-        p_price => 280000, 
-        p_stock => 50, 
-        p_description => 'Tác phẩm nổi tiếng của Ernest Hemingway', 
-        p_type => 'Book', 
-        p_isbn => '978-604-12-56789', 
-        p_publisher_name => 'NXB Văn Học', 
-        p_puplisher_address => 'Hà Nội, Việt Nam', 
-        p_puplisher_contact => '0246543210', 
-        p_author_Name => 'Ernest Hemingway', 
-        p_author_Bio => 'Nhà văn nổi tiếng người Mỹ', 
-        p_genre => 'Fiction'
-    );
-
     -- Book 6: Chiến Binh Cầu Vồng
     insert_item_and_subclass(
         p_name => 'Chiến Binh Cầu Vồng', 
@@ -322,6 +258,7 @@ BEGIN
         p_stock => 40, 
         p_description => 'Cuốn sách của Andrea Hirata về tinh thần vượt khó', 
         p_type => 'Book', 
+        p_imagePath => 'chienbinhcauvong.jpg',
         p_isbn => '978-604-67-23456', 
         p_publisher_name => 'NXB Trẻ', 
         p_puplisher_address => 'TP Hồ Chí Minh, Việt Nam', 
@@ -338,6 +275,7 @@ BEGIN
         p_stock => 45, 
         p_description => 'Tác phẩm châm biếm nổi tiếng của Vũ Trọng Phụng', 
         p_type => 'Book', 
+        p_imagePath => 'Sodo.jpg',
         p_isbn => '978-604-45-34567', 
         p_publisher_name => 'NXB Văn Học', 
         p_puplisher_address => 'Hà Nội, Việt Nam', 
@@ -365,6 +303,141 @@ BEGIN
     COMMIT;
 END;
 /
+BEGIN
+    -- Toy 1
+    insert_item_and_subclass(
+        p_name => 'Xe Hơi Điều Khiển', 
+        p_price => 480000, 
+        p_stock => 30, 
+        p_description => 'Xe hơi điều khiển từ xa', 
+        p_type => 'Toys', 
+        p_isbn => NULL, 
+        p_production_date => TO_DATE('2023-03-01', 'YYYY-MM-DD'), 
+        p_manufacturer => 'ToyCo Ltd', 
+        p_imagePath => 'XehoiDieukhienTuxa.jpg'
+    );
+
+    -- Toy 2
+    insert_item_and_subclass(
+        p_name => 'Bộ Xếp Hình Lego', 
+        p_price => 1200000, 
+        p_stock => 20, 
+        p_description => 'Bộ xếp hình Lego nhiều mảnh', 
+        p_type => 'Toys', 
+        p_isbn => NULL, 
+        p_production_date => TO_DATE('2023-05-01', 'YYYY-MM-DD'), 
+        p_manufacturer => 'Lego Group', 
+        p_imagePath => 'BoXepHinhLegor.jpg'
+    );
+
+    -- Toy 3
+    insert_item_and_subclass(
+        p_name => 'Búp Bê Công Chúa', 
+        p_price => 600000, 
+        p_stock => 40, 
+        p_description => 'Búp bê công chúa dành cho bé gái', 
+        p_type => 'Toys', 
+        p_isbn => NULL, 
+        p_production_date => TO_DATE('2023-02-10', 'YYYY-MM-DD'), 
+        p_manufacturer => 'DreamToys', 
+        p_imagePath => 'bup-be-cong-chua-elsa-kitchen-set-1.jpg'
+    );
+
+    -- Toy 4
+    insert_item_and_subclass(
+        p_name => 'Gấu Bông Teddy', 
+        p_price => 720000, 
+        p_stock => 50, 
+        p_description => 'Gấu bông mềm mại', 
+        p_type => 'Toys', 
+        p_isbn => NULL, 
+        p_production_date => TO_DATE('2023-06-01', 'YYYY-MM-DD'), 
+        p_manufacturer => 'CuddleToys Inc', 
+        p_imagePath => 'GaubongTeddy1.jpg'
+    );
+
+    -- Toy 5
+    insert_item_and_subclass(
+        p_name => 'Bộ Đồ Chơi Nhà Bếp', 
+        p_price => 960000, 
+        p_stock => 25, 
+        p_description => 'Bộ đồ chơi nhà bếp cho bé gái', 
+        p_type => 'Toys', 
+        p_isbn => NULL, 
+        p_production_date => TO_DATE('2023-04-25', 'YYYY-MM-DD'), 
+        p_manufacturer => 'PlayKitchen Co.', 
+        p_imagePath => 'DoChoiNhaBep.jpg'
+    );
+
+    -- Toy 6
+    insert_item_and_subclass(
+        p_name => 'Bộ Trò Chơi Cờ Tỷ Phú', 
+        p_price => 480000, 
+        p_stock => 35, 
+        p_description => 'Trò chơi cờ tỷ phú cho gia đình', 
+        p_type => 'Toys', 
+        p_isbn => NULL, 
+        p_production_date => TO_DATE('2023-07-10', 'YYYY-MM-DD'), 
+        p_manufacturer => 'BoardGames Ltd', 
+        p_imagePath => 'co-ty-phu-monopoly_4.jpg'
+    );
+
+    -- Toy 7
+    insert_item_and_subclass(
+        p_name => 'Robot Điều Khiển', 
+        p_price => 1440000, 
+        p_stock => 15, 
+        p_description => 'Robot điều khiển từ xa', 
+        p_type => 'Toys', 
+        p_isbn => NULL, 
+        p_production_date => TO_DATE('2023-03-15', 'YYYY-MM-DD'), 
+        p_manufacturer => 'RobotTech', 
+        p_imagePath => 'RobotDieuKhienTuXa.jpg'
+    );
+
+    -- Toy 8
+    insert_item_and_subclass(
+        p_name => 'Bộ Lắp Ráp Xe Tăng', 
+        p_price => 840000, 
+        p_stock => 20, 
+        p_description => 'Bộ lắp ráp xe tăng cho trẻ em', 
+        p_type => 'Toys', 
+        p_isbn => NULL, 
+        p_production_date => TO_DATE('2023-08-01', 'YYYY-MM-DD'), 
+        p_manufacturer => 'ToyArmy Co.', 
+        p_imagePath => 'LaprapXetang.jpg'
+    );
+
+    -- Toy 9
+    insert_item_and_subclass(
+        p_name => 'Bộ Ghép Hình Puzzle', 
+        p_price => 360000, 
+        p_stock => 60, 
+        p_description => 'Bộ ghép hình giúp phát triển trí não', 
+        p_type => 'Toys', 
+        p_isbn => NULL, 
+        p_production_date => TO_DATE('2023-04-01', 'YYYY-MM-DD'), 
+        p_manufacturer => 'PuzzleMakers', 
+        p_imagePath => 'XepHinhPuzzle.png'
+    );
+
+    -- Toy 10
+    insert_item_and_subclass(
+        p_name => 'Tàu Lửa Điện', 
+        p_price => 960000, 
+        p_stock => 25, 
+        p_description => 'Tàu lửa điện chạy pin', 
+        p_type => 'Toys', 
+        p_isbn => NULL, 
+        p_production_date => TO_DATE('2023-09-01', 'YYYY-MM-DD'), 
+        p_manufacturer => 'TrainWorld Ltd', 
+        p_imagePath => 'TauLuaDien.jpg'
+    );
+
+    COMMIT;
+END;
+/
+
 
 BEGIN
     -- Insert Regular Users
@@ -406,18 +479,18 @@ END;
 BEGIN
     -- Order 101: 2 Lego Sets for UserID 2001
     INSERT INTO OrderItem (OrderID, ItemID, Quantity)
-    VALUES (101, 100015, 2);
+    VALUES (101, 100070, 2);
 
     -- Order 102: 1 Gấu Bông Teddy and 1 Xe Hơi Điều Khiển for UserID 2002
     INSERT INTO OrderItem (OrderID, ItemID, Quantity)
-    VALUES (102, 100023, 1);
+    VALUES (102, 100080, 1);
 
     INSERT INTO OrderItem (OrderID, ItemID, Quantity)
-    VALUES (102, 100006, 1);
+    VALUES (102, 100075, 1);
 
     -- Order 103: 1 Book "Đất Rừng Phương Nam" for UserID 3001
     INSERT INTO OrderItem (OrderID, ItemID, Quantity)
-    VALUES (103, 100014, 1);
+    VALUES (103, 100085, 1);
 
     COMMIT;
 END;
