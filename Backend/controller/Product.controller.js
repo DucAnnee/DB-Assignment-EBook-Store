@@ -18,8 +18,8 @@ export class ProductController{
                     i.ItemID, 
                     i.Name, 
                     CASE 
-                        WHEN b.ItemID IS NOT NULL THEN 'Book'
-                        WHEN t.ItemID IS NOT NULL THEN 'Toy'
+                        WHEN b.ItemID IS NOT NULL THEN 'book'
+                        WHEN t.ItemID IS NOT NULL THEN 'toy'
                         ELSE 'Not Found' 
                     END AS ItemType
                 FROM 
@@ -37,25 +37,57 @@ export class ProductController{
             );
 
             console.log(result.rows);
+            let bookdetail;
+            let toydetail;
 
             if (result.rows.length > 0) {
-                const item = result.rows[0];
+                let item = result.rows[0];
                 console.log(`Item Type: ${item.ITEMTYPE}`);
     
                 // Conditional logic to call DoA or DoB based on ItemType
-                if (item.ITEMTYPE === 'Book') {
+                if (item.ITEMTYPE === 'book') {
                     console.log("Book");
-                } else if (item.ITEMTYPE === 'Toy') {
+
+                    bookdetail = await dbconnection.execute(
+                        `SELECT *
+                        FROM BOOKINFO
+                        WHERE ItemID = :id`,
+                        { id: { val: id } },
+                        {
+                            outFormat: oracledb.OUT_FORMAT_OBJECT
+                        }
+                    );
+                    
+                    bookdetail.rows[0].ITEMTYPE = item.ITEMTYPE;
+                    console.log(bookdetail.rows);
+                    res.status(200).json({
+                        status: 'success',
+                        data: bookdetail.rows,
+                    });
+                } else if (item.ITEMTYPE === 'toy') {
                     console.log("Toy");
+
+                    toydetail = await dbconnection.execute(
+                        `SELECT *
+                        FROM TOYINFO
+                        WHERE ItemID = :id`,
+                        { id: { val: id } },
+                        {
+                            outFormat: oracledb.OUT_FORMAT_OBJECT
+                        }
+                    );
+
+                    toydetail.rows[0].ITEMTYPE = item.ITEMTYPE;
+                    console.log(toydetail.rows);
+                    res.status(200).json({
+                        status: 'success',
+                        data: toydetail.rows,
+                    });
                 } else {
                     console.log("Item not found or is neither Book nor Toy");
                 }
     
                 // Respond with the data
-                res.status(200).json({
-                    status: 'success',
-                    data: item,
-                });
             } else {
                 throw new AppError('Item not found.', 404);
             }    
@@ -84,11 +116,11 @@ export class ProductController{
 
             const result = await dbconnection.execute(
                 `SELECT *
-                FROM BOOK_INFO`,
-                [],
-                { maxRows: quantity }
+                FROM ALLITEM
+                FETCH FIRST :quantity ROWS ONLY`, 
+                { quantity }, 
+                { outFormat: oracledb.OUT_FORMAT_OBJECT }
             );
-
             console.log(result);
 
             res.status(200).json({
